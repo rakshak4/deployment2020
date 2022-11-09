@@ -1,0 +1,8 @@
+th, td, .customer-title, .loan-title {
+    text-align: center;
+}
+
+.terminate-loan-btn {
+    margin-top: 10px;
+    text-align: center;
+}

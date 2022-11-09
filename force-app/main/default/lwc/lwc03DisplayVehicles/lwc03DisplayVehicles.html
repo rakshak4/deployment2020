@@ -1,0 +1,7 @@
+<template>
+    
+    <div class="slds-text-heading_medium" style="background-color: white;">{label.VehicleTitle}</div>
+    <template for:each={lstVehicles} for:item="vehicle"> 
+        <c-lwc03-vehicle-item key={vehicle} vehicle={vehicle}></c-lwc03-vehicle-item>
+    </template>
+</template>

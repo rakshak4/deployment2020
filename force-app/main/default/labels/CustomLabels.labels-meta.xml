@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>BAT01_Email_Destination</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BAT01 : Email destination</shortDescription>
+        <value>vanessen.munisamy@spoonconsulting.com</value>
+    </labels>
+    <labels>
+        <fullName>BAT01_Error_Mail_Body</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BAT01 : Error mail body</shortDescription>
+        <value>The batch BAT01 failed with some errors. 
+        Find attached the error log file.</value>
+    </labels>
+    <labels>
+        <fullName>BAT01_Error_Mail_subject</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BAT01 : Error mail subject</shortDescription>
+        <value>Batch BAT01 finished with errors</value>
+    </labels>
+    <labels>
+        <fullName>BAT01_Task_Comment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BAT01 : Task comment</shortDescription>
+        <value>Reminder for registration number : {0} which expires on {1}</value>
+    </labels>
+    <labels>
+        <fullName>BAT01_Task_Subject</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BAT01 : Task subject</shortDescription>
+        <value>Insurance renewal reminder</value>
+    </labels>
+    <labels>
+        <fullName>VehicleTitle</fullName>
+        <categories>lwc03DisplayVehicles</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Vehicle Title</shortDescription>
+        <value>List of vehicles</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,9 @@
+.Red{
+    --sds-c-icon-color-foreground: red;
+}
+.Blue{
+    --sds-c-icon-color-foreground: blue;
+}
+.Black{
+    --sds-c-icon-color-foreground: black;
+}

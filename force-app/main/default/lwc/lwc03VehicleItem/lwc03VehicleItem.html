@@ -1,0 +1,15 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open  style="background-color: white;">
+
+        <lightning-accordion-section name={vehicle.Name} label={vehicle.Make__c} style="font-weight: bold;">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="custom:custom31" style={colorStyle} title="Vehicle"></lightning-icon>
+                </div>
+                <div>Model: {vehicle.Model__c} </div>
+                <div>Registration Number: {vehicle.RegistrationNumber__c} </div>
+                <div>Insurance Start Date: {vehicle.InsuranceStartDate__c} </div>
+                <div>Insurance End Date: {vehicle.InsuranceEndDate__c} </div>
+        </lightning-accordion-section>
+
+    </lightning-accordion>
+</template>

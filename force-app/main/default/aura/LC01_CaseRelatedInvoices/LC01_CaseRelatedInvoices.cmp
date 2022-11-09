@@ -1,0 +1,42 @@
+<aura:component controller="LC01_CaseRelatedInvoiceCtrl" 
+                implements="flexipage:availableForRecordHome,force:hasRecordId" 
+                access="global">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="invoices" type="Invoice__c[]"/>
+    <aura:attribute name="latestInvoice" type="Invoice__c"/>
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+
+    <!-- Handle Event sent by child -->
+    <aura:handler name="editInvoiceEvent" event="c:LC01_EditInvoiceEvent" action="{!c.handleEditInvoiceEvent}"/>
+    
+     <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="custom:custom23" size="small"/>
+            View All Invoices related to your case:
+        </aura:set>
+         
+          <!--loading spinner start-->
+         <aura:if isTrue="{!v.spinner}">
+             <lightning:spinner alternativeText="Loading" size="large"/>
+         </aura:if>
+         <!-- Loading spinner end-->  
+         
+         <!-- Start of accordion Component -->
+         <lightning:accordion allowMultipleSectionsOpen="true" aura:id="accordionInvoices">
+             <!-- Display Only Editable Invoice -->
+             <lightning:accordionSection name="{!v.latestInvoice.Name}" label="{!v.latestInvoice.Name}">
+                 <!-- Child component To display editable Invoice-->
+				<c:LC01_ViewInvoices invoiceRecordId="{!v.latestInvoice.Id}" showEditbutton= "true"></c:LC01_ViewInvoices>
+             </lightning:accordionSection>
+         
+             <!-- Displays Invoices That Cannot be edited -->
+             <aura:iteration items="{!v.invoices}" var="invoice"> 
+                <lightning:accordionSection name="{!invoice.Name}" label="{!invoice.Name}">
+                    <!-- Child component To display view Invoice-->
+                    <c:LC01_ViewInvoices invoiceRecordId="{!invoice.Id}" showEditbutton= "false"></c:LC01_ViewInvoices>
+                </lightning:accordionSection>
+            </aura:iteration>
+        </lightning:accordion>
+    </lightning:card>
+</aura:component>

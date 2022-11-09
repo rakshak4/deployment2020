@@ -1,0 +1,57 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="customer-title">
+                Customer Vehicle Details
+            </div>
+            <table class="customer-table" border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Total Loss</th>
+                    <th>Warranty</th>
+                </tr>
+                <tr>
+                    <td>{custVehicle.Name}</td>
+                    <td>{custVehicle.Make__c}</td>
+                    <td>{custVehicle.Model__c}</td>
+                    <td>{custVehicle.YearVehicle__c}</td>
+                    <td>{custVehicle.Total_loss__c}</td>
+                    <td>{custVehicle.Warranty__c}</td>
+                </tr>
+            </table>
+        </div>
+    </article>
+    <template if:true={hasLoan}>
+        <article class="slds-card loan-container">
+            <div class="slds-card__body slds-card__body_inner">
+                <div class="loan-title">
+                    Loaned Vehicle Details
+                </div>
+                <table class="loan-table" border="1" style={loanStyle}>
+                    <tr>
+                        <th>Name</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr>
+                        <td>{loanVehicle.Name}</td>
+                        <td>{loanVehicle.Make__c}</td>
+                        <td>{loanVehicle.Model__c}</td>
+                        <td>{loanVehicle.YearVehicle__c}</td>
+                        <td>{loanVehicle.Start_date__c}</td>
+                        <td>{loanVehicle.End_date__c}</td>
+                    </tr>
+                </table>
+            </div>
+        </article>
+        <div class="terminate-loan-btn">
+            <c-lwc02_-terminate-loan onterminated={handleTerminate} disabled={disableButton} variant={variant} recordid={recordId}></c-lwc02_-terminate-loan>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,20 @@
+<template>
+    
+    <template for:each={lstVehicles} for:item="vehicle">  
+
+            <c-lwc03-vehicle-item key={vehicle} vehicle={vehicle}></c-lwc03-vehicle-item>
+            <!-- <lightning-accordion   allow-multiple-sections-open  style="background-color: white;">
+
+                <lightning-accordion-section name={vehicle.Name} label={vehicle.Make__c} style="font-weight: bold;">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="custom:custom31" class={vehicle.Colour__c} style="--sds-c-icon-color-background: white;" title="Vehicle"></lightning-icon>
+                        </div>
+                        <div> Vehicle Model: {vehicle.Model__c} </div>
+                        <div> Vehicle RegistrationNumber__c: {vehicle.RegistrationNumber__c} </div>
+                        <div> Vehicle InsuranceStartDate__c: {vehicle.InsuranceStartDate__c} </div>
+                        <div> Vehicle InsuranceEndDate__c: {vehicle.InsuranceEndDate__c} </div>
+                </lightning-accordion-section>
+
+            </lightning-accordion> -->
+    </template>
+</template>

@@ -1,0 +1,9 @@
+<aura:component >
+    <!-- Register event to be sent to parent -->
+    <aura:registerEvent name="editInvoiceEvent" type="c:LC01_EditInvoiceEvent"/>
+
+    <!-- Record Id of Invoice Passed from Parent -->
+    <aura:attribute name="invoiceRecordId" type="String"/>
+    
+
+</aura:component>

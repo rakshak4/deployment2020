@@ -1,0 +1,36 @@
+<aura:component >
+    <!-- Register event to be sent to parent -->
+    <aura:registerEvent name="editInvoiceEvent" type="c:LC01_EditInvoiceEvent"/>
+
+    <!-- Record Id of Invoice Passed from Parent -->
+    <aura:attribute name="invoiceRecordId" type="String"/>
+    
+	<lightning:recordEditForm aura:id="recordEditForm"
+                                           recordId="{!v.invoiceRecordId}"
+                                           objectApiName="Invoice__c"
+                                           onsubmit="{!c.handleSubmit}"
+                                           onsuccess="{!c.handleSuccess}">
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Name" />
+            </div>            
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Account__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Contact__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Amount_with_Vat__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Last_payment_date__c" />
+            </div>                
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:inputField fieldName="Invoice_Date__c" />
+            </div>
+        </div>
+        <lightning:button aura:id="submit" type="submit" label="Update Record" class="slds-m-top_medium" variant="brand" />
+    </lightning:recordEditForm>
+</aura:component>
