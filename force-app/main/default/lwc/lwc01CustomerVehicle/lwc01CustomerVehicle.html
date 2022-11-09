@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Mehreen Jhummun
+  @group             : 
+  @last modified on  : 03/11/2022
+  @last modified by  : Mehreen Jhummun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   02/11/2022   Mehreen Jhummun   Initial Version
+-->
+<template>
+  
+    <h1>{recordId}</h1>
+    
+    <lightning-card title="Vehicle Details">
+                <template if:true={vehicledetail.data}>
+                    <template for:each={vehicledetail.data} for:item="detail">
+                        <p key={detail.Id}>{detail.Vehicle__r.Engine_capacity__c}</p>
+                        <p key={detail.Id}>{detail.Vehicle__r.Name}</p>
+                        <p key={detail.Id}>{detail.Vehicle__r.RecordType.Name}</p>  
+                    </template>
+                </template>
+            
+
+                <c-lwc01-loaned-vehicle get-record={recordId}></c-lwc01-loaned-vehicle>
+              </lightning-card>
+</template>

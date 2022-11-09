@@ -2,86 +2,37 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
     <decisions>
-        <description>Check if a record is created or updated</description>
-        <name>Check_Record</name>
-        <label>Check Record</label>
-        <locationX>446</locationX>
-        <locationY>455</locationY>
-        <defaultConnector>
-            <targetReference>CheckFieldsForUpdatedRecords</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>UpdatedRecord</defaultConnectorLabel>
-        <rules>
-            <name>IsNewRecord</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>IsNew</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>CheckFieldsForNewRecords</targetReference>
-            </connector>
-            <label>IsNewRecord</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Check if user has bypass</description>
+        <description>Check Bypass on Custom Setting</description>
         <name>CheckBypass</name>
-        <label>Check Bypass?</label>
+        <label>Check Bypass</label>
         <locationX>776</locationX>
         <locationY>335</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>NoBypass</name>
+            <name>BypassNotActive</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Setup.CS_GlobalBypassSetting__c.BypassFlow__c</leftValueReference>
+                <leftValueReference>$Setup.CS_GlobalBypassSetting__c.BypassFlows__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_Record</targetReference>
+                <targetReference>CheckRecord</targetReference>
             </connector>
-            <label>No Bypass</label>
+            <label>Bypass Not Active</label>
         </rules>
     </decisions>
     <decisions>
-        <description>create the filter conditions base on the fields</description>
-        <name>CheckFieldsForNewRecords</name>
-        <label>Check Fields For New Records</label>
-        <locationX>182</locationX>
-        <locationY>575</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>VehicleIsAssigned</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>VehicleFieldUpdate</targetReference>
-            </connector>
-            <label>Vehicle Is Assigned</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>create the filter conditions base on the fields</description>
+        <description>Check if in case we have loaned vehicle blank</description>
         <name>CheckFieldsForUpdatedRecords</name>
         <label>Check Fields For Updated Records</label>
         <locationX>710</locationX>
         <locationY>575</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>VehicleChanged</name>
+            <name>IsLoanVehicleExisted</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
@@ -100,20 +51,64 @@
             <connector>
                 <targetReference>VehicleFieldUpdateOnChange</targetReference>
             </connector>
-            <label>Vehicle Changed</label>
+            <label>Is Loan Vehicle Existed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if in case we have loaned vehicle blank</description>
+        <name>CheckIfLoanVehicleBlank</name>
+        <label>Check If Loan Vehicle Blank</label>
+        <locationX>182</locationX>
+        <locationY>575</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsLoanVehicle</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>VehicleFieldUpdate</targetReference>
+            </connector>
+            <label>Is Loan Vehicle</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if record</description>
+        <name>CheckRecord</name>
+        <label>Check Record</label>
+        <locationX>446</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>CheckFieldsForUpdatedRecords</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Updated Record</defaultConnectorLabel>
+        <rules>
+            <name>NewRecord</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CheckIfLoanVehicleBlank</targetReference>
+            </connector>
+            <label>New Record</label>
         </rules>
     </decisions>
     <environments>Default</environments>
     <formulas>
-        <description>check if the case is new record or the vehicle assigned to the case has been changed</description>
-        <name>checkNewOrUpdateVehicleOnCase</name>
-        <dataType>Boolean</dataType>
-        <expression>( IsNew() || ISCHANGED({!$Record.Vehicle__c}) )</expression>
-    </formulas>
-    <formulas>
+        <description>Check if record is new</description>
         <name>IsNew</name>
         <dataType>Boolean</dataType>
-        <expression>IsNEw()</expression>
+        <expression>ISNEW()</expression>
     </formulas>
     <interviewLabel>CseAfterInsertUpdate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CseAfterInsertUpdate</label>
@@ -148,7 +143,7 @@
     </start>
     <status>Active</status>
     <subflows>
-        <description>Update specific fields for a loaned vehicle</description>
+        <description>update specific field for loaned vehicle</description>
         <name>VehicleFieldUpdate</name>
         <label>Vehicle Field Update</label>
         <locationX>50</locationX>
@@ -162,7 +157,7 @@
         </inputAssignments>
     </subflows>
     <subflows>
-        <description>Update loaned vehicle fields on update</description>
+        <description>update loaned vehicle fields on update</description>
         <name>VehicleFieldUpdateOnChange</name>
         <label>Vehicle Field Update On Change</label>
         <locationX>578</locationX>

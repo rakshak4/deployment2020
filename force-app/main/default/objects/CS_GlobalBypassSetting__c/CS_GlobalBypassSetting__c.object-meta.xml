@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>Hierarchy</customSettingsType>
+    <description>Setup tool to configure whether a user can execute trigger, workflow rule, validation rule or process builder.</description>
     <enableFeeds>false</enableFeeds>
-    <label>CS GlobalBypassSetting</label>
+    <label>CS_Global Bypass Setting</label>
     <visibility>Public</visibility>
 </CustomObject>

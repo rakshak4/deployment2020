@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : Mehreen Jhummun
+  @group             : 
+  @last modified on  : 03/11/2022
+  @last modified by  : Mehreen Jhummun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   02/11/2022   Mehreen Jhummun   Initial Version
+-->
+<template>
+<!--     
+    <c-lwc01-loaned-vehicle></c-lwc01-loaned-vehicle>
+    
+
+    <template for:each={vehicledetail} for:item="detail">
+        <c-lwc01-customer-vehicle
+            key={detail.Id} 
+            details={detail}>
+        </c-lwc01-customer-vehicle>
+    </template> -->
+    <h1>{recordId}</h1>
+    
+            
+                <template if:true={vehicledetail.data}>
+                    <template for:each={vehicledetail.data} for:item="detail">
+                        <p key={detail.Id}>{detail.Vehicle__r.Engine_capacity__c}</p>
+                        <p key={detail.Id}>{detail.Vehicle__r.Name}</p>
+                        <p key={detail.Id}>{detail.Vehicle__r.RecordType.Name}</p> 
+                        
+                        
+                    </template>
+                </template>
+            
+        
+    
+</template>

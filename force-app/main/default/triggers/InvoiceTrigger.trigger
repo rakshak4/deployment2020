@@ -1,16 +1,20 @@
 /**
- * @description       : Trigger on Invoice__c Object
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * @File Name          : InvoiceTrigger.trigger
+ * @Description        : case study 2: trigger on  As a customer, i should receive an email when my invoice is created
+ * @Author             : MJH (Spoon Consulting)
+ * @Group              :
+ * @Last Modified By   : Mehreen Jhummun
+ * @Last Modified On   : 25/10/2022
+ * @Modification Log   :
+ *==============================================================================
+ * Ver         Date                     Author      Modification
+ *==============================================================================
+ * 1.0    25-10-2022, 12:09:30             MJH      Initial Version
  **/
 trigger InvoiceTrigger on Invoice__c(after insert) {
     InvoiceTriggerHandler handler = new InvoiceTriggerHandler();
-
     if (Trigger.isAfter && Trigger.isInsert) {
         handler.handleAfterInsert(Trigger.new);
     }
+
 }

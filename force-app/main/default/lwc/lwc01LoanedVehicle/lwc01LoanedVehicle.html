@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : Mehreen Jhummun
+  @group             : 
+  @last modified on  : 03/11/2022
+  @last modified by  : Mehreen Jhummun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   03/11/2022   Mehreen Jhummun   Initial Version
+-->
+<template>
+    <h1>{recordId}</h1>
+    
+            
+                <template if:true={vehicledetailloan.data}>
+                    <template for:each={vehicledetailloan.data} for:item="detail">
+                        <p key={detail.Id}>{detail.Vehicle__r.Name}</p>
+                        <p key={detail.Id}>{detail.Vehicle__r.RecordType.Name}</p> 
+                        
+                        
+                    </template>
+                </template>
+            
+    
+</template>

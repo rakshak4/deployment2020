@@ -1,36 +1,57 @@
-<aura:component >
-    <!-- Register event to be sent to parent -->
-    <aura:registerEvent name="editInvoiceEvent" type="c:LC01_EditInvoiceEvent"/>
+<!--
+  @description       : 
+  @author            : Mehreen Jhummun
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Mehreen Jhummun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   31/10/2022   Mehreen Jhummun   Initial Version
+-->
+<aura:component>
 
-    <!-- Record Id of Invoice Passed from Parent -->
-    <aura:attribute name="invoiceRecordId" type="String"/>
+  
+    <aura:attribute name="showModel" type="Boolean" default="false"/>
+    <aura:attribute name="invoiceRecord" type="Object"/>
+  
+    <aura:registerEvent name="childEvent" type="c:compEvent"/>
+    <!-- <p>{!v.recordId}</p> -->
+
+    <lightning:button label="update Latest Invoice" onclick="{! c.openModel}" variant="brand"/>
+
+    <aura:if isTrue="{!v.showModel}">
+
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <lightning:buttonIcon iconName="utility:close"     onclick="{! c.closeModel }" alternativeText="close"
+            variant="bare-inverse"     class="slds-modal__close"/>
+
+          <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            
+                <lightning:recordEditForm recordId="{!v.invoiceRecord.Id}" objectApiName="Invoice__c" onsuccess="{!c.onSubmitEvent}">
+                    <lightning:messages />
+                    <lightning:InputField fieldName="Name" />
+                    <lightning:InputField fieldName="Contact__c" />
+                    <lightning:InputField fieldName="AmountWithVat__c" />
+                    <lightning:InputField fieldName="InvoiceDate__c" />
+                    <lightning:InputField fieldName="AmountWithoutVat__c" />
+                    <lightning:InputField fieldName="Account__c" />
+                    <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                </lightning:recordEditForm>
     
-	<lightning:recordEditForm aura:id="recordEditForm"
-                                           recordId="{!v.invoiceRecordId}"
-                                           objectApiName="Invoice__c"
-                                           onsubmit="{!c.handleSubmit}"
-                                           onsuccess="{!c.handleSuccess}">
-        
-        <div class="slds-grid slds-wrap">
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Name" />
-            </div>            
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Account__c" />
-            </div>
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Contact__c" />
-            </div>
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Amount_with_Vat__c" />
-            </div>
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Last_payment_date__c" />
-            </div>                
-            <div class="slds-col slds-size_1-of-2">
-                <lightning:inputField fieldName="Invoice_Date__c" />
-            </div>
+          </div>
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+            <button class="slds-button slds-button_brand">Save</button>
+          </div>
         </div>
-        <lightning:button aura:id="submit" type="submit" label="Update Record" class="slds-m-top_medium" variant="brand" />
-    </lightning:recordEditForm>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+
+   </aura:if> 
+
 </aura:component>
