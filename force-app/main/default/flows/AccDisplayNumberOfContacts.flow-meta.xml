@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
-        <description>increment counter</description>
+        <description>Increment the Counter contact</description>
         <name>IncrementCounter</name>
         <label>Increment Counter</label>
         <locationX>264</locationX>
@@ -18,7 +18,7 @@
             <targetReference>LoopThroughListOfRelatedContacts</targetReference>
         </connector>
     </assignments>
-    <description>Display number of Contacts</description>
+    <description>Display Number Of Contacts</description>
     <environments>Default</environments>
     <interviewLabel>AccDisplayNumberOfContacts {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccDisplayNumberOfContacts</label>
@@ -34,7 +34,7 @@
             <targetReference>IncrementCounter</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>DisplayNumberOfContact</targetReference>
+            <targetReference>DisplayNumberOfContacts</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -57,7 +57,7 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
-        <description>Get related contacts of records</description>
+        <description>Get related contacts of record.</description>
         <name>GetRelatedContacts</name>
         <label>Get Related Contacts</label>
         <locationX>176</locationX>
@@ -81,8 +81,9 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
-        <name>DisplayNumberOfContact</name>
-        <label>Display Number Of Contact</label>
+        <description>Display Number Of Contacts on the screen.</description>
+        <name>DisplayNumberOfContacts</name>
+        <label>Display Number Of Contacts</label>
         <locationX>176</locationX>
         <locationY>614</locationY>
         <allowBack>true</allowBack>
@@ -90,7 +91,7 @@
         <allowPause>true</allowPause>
         <fields>
             <name>NumberOfContacts</name>
-            <fieldText>&lt;p&gt;Number of Contacts : &lt;strong&gt;{!ContactCounter}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Number Of Contacts : &lt;strong&gt;{!ContactCounter}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -105,7 +106,7 @@
     </start>
     <status>Active</status>
     <variables>
-        <description>Store the number of contacts related to the Account</description>
+        <description>Store the number of contact related to the Account.</description>
         <name>ContactCounter</name>
         <dataType>Number</dataType>
         <isCollection>false</isCollection>
@@ -117,7 +118,7 @@
         </value>
     </variables>
     <variables>
-        <description>Id of the current record</description>
+        <description>Id of the current record.</description>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>

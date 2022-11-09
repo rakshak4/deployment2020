@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>AaliyahLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Aaliyah Label</shortDescription>
+        <value>Some text some text</value>
+    </labels>
+    <labels>
+        <fullName>MehreenLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Mehreen Label</shortDescription>
+        <value>Hello, it&apos;s Mehreen Jhummun. How are you?.</value>
+    </labels>
 </CustomLabels>
