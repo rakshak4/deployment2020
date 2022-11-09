@@ -109,6 +109,12 @@
     </layoutSections>
     <quickActionList>
         <quickActionListItems>
+            <quickActionName>Task.EditDescription</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>Task.Defer</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
@@ -128,12 +134,6 @@
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>NewEvent</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>Task.EditDescription</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>Task.Defer</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>Task.UpdateStatus</quickActionName>

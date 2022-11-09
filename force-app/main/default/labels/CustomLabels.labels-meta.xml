@@ -44,4 +44,25 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>BhavishLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Bhavish Label</shortDescription>
+        <value>Hello Keny</value>
+    </labels>
+    <labels>
+        <fullName>ListOfVehicles</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>List Of Vehicles</shortDescription>
+        <value>List of Vehicle</value>
+    </labels>
+    <labels>
+        <fullName>keny</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>keny</shortDescription>
+        <value>HELLO Bhavish</value>
+    </labels>
 </CustomLabels>

@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Bhavish Nundoo
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Bhavish Nundoo
+  Modifications Log
+  Ver   Date         Author           Modification
+  1.0   10-31-2022   Bhavish Nundoo   Initial Version
+-->
+<aura:component implements="flexipage:availableForRecordHome">
+    <aura:attribute name="childinvoiceRecordId" type="String"/>
+    
+
+    <td>{!v.childinvoiceRecordId}</td>
+        <lightning:recordViewForm recordId="{!v.childinvoiceRecordId}" objectApiName="Invoice__c">
+            <div class="slds-box">
+                <!-- <lightning:messages /> -->
+                <lightning:outputField fieldName="Name" />
+                <lightning:outputField fieldName="Account__c" />
+                <lightning:outputField fieldName="AmountWithVat__c" />
+                <lightning:outputField fieldName="InvoiceDate__c" />
+                <lightning:outputField fieldName="AmountWithoutVat__c" />
+                <lightning:outputField fieldName="Contact__c" />
+                    
+            </div>
+        </lightning:recordViewForm>
+    
+</aura:component>

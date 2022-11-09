@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : Bhavish Nundoo
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Bhavish Nundoo
+  Modifications Log
+  Ver   Date         Author           Modification
+  1.0   10-28-2022   Bhavish Nundoo   Initial Version
+-->
+<aura:component controller="LC01_DisplayInvoicesController" implements="flexipage:availableForRecordHome,force:hasRecordId" >
+    <aura:attribute name="invoices" type="List"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="latestInvoice" type="Invoice__c"/>
+    <aura:attribute name="showModal" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.handleLoad}"/> 
+    <aura:handler name="editInvoiceEvent" event="c:LC01_EditInvoiceEvent" action="{!c.handleEditInvoiceEvent}"/>
+    
+    <h1>hii</h1>
+    <lightning:button onclick="{!c.openModel}" class="slds-m-top_small" variant="brand" name="latestInvoiceB" label="Update latest Invoice" />
+    
+    
+
+    <aura:iteration items="{!v.invoices}" var="invoice">
+        <c:LC02_ViewableInvoices childinvoiceRecordId ="{!invoice.Id}" ></c:LC02_ViewableInvoices>
+    </aura:iteration>
+    
+    
+    <aura:if isTrue="{!v.showModal}">
+        <c:LC03_EditableInvoices childLastestInvoiceRecordId ="{!v.latestInvoice.Id}"></c:LC03_EditableInvoices>
+        
+
+    </aura:if>
+    
+</aura:component>

@@ -3,9 +3,8 @@
     <fullName>Model__c</fullName>
     <externalId>false</externalId>
     <label>Model</label>
-    <length>255</length>
-    <required>false</required>
-    <trackHistory>false</trackHistory>
+    <length>18</length>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>
