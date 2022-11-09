@@ -3,7 +3,7 @@
     <fullName>BypassFlow__c</fullName>
     <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>BypassFlow</label>
+    <label>Bypass Flow</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

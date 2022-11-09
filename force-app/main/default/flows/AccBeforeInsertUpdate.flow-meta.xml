@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
         <description>Set Active to yes and Activation Date to current datetime</description>
         <name>SetActiveAndActivationDate</name>
-        <label>Set Active And Activation Date</label>
+        <label>Set Active and Activation Date</label>
         <locationX>50</locationX>
         <locationY>551</locationY>
         <assignmentItems>
@@ -18,19 +18,32 @@
             <assignToReference>$Record.ActivationDate__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetDeactivationDate</name>
+        <label>Set Deactivation Date</label>
+        <locationX>314</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.DeactivationDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
     </assignments>
     <decisions>
-        <description>Check Bypass on custom setting</description>
+        <description>This is to check if the bypass is triggered on custom setting</description>
         <name>CheckBypass</name>
         <label>Check Bypass</label>
-        <locationX>380</locationX>
+        <locationX>501</locationX>
         <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>BypassNotActive</name>
+            <name>BypassActive</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Setup.CS_GlobalBypassSetting__c.BypassFlow__c</leftValueReference>
@@ -46,12 +59,15 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Check if new record</description>
+        <description>check if  record is created</description>
         <name>CheckRecord</name>
-        <label>Check  Record</label>
-        <locationX>182</locationX>
+        <label>Check new record</label>
+        <locationX>248</locationX>
         <locationY>431</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnector>
+            <targetReference>IsChangedActiveAndActiveYes</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>updated</defaultConnectorLabel>
         <rules>
             <name>NewRecord</name>
             <conditionLogic>and</conditionLogic>
@@ -65,7 +81,37 @@
             <connector>
                 <targetReference>SetActiveAndActivationDate</targetReference>
             </connector>
-            <label>New Record</label>
+            <label>New record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is actived changed, and the value needs to be to yes</description>
+        <name>IsChangedActiveAndActiveYes</name>
+        <label>Ischanged active and active yes</label>
+        <locationX>446</locationX>
+        <locationY>551</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsActiveChangedAndValueToYes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetDeactivationDate</targetReference>
+            </connector>
+            <label>IsActiveChangedAndValueToYes</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -75,7 +121,7 @@
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
     </formulas>
-    <interviewLabel>Acc {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>AccBeforeInsertUpdate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccBeforeInsertUpdate</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -97,7 +143,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>254</locationX>
+        <locationX>375</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CheckBypass</targetReference>

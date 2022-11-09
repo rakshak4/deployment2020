@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>MKOTestingDeployment</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MKO Testing Deployment</shortDescription>
+        <value>Hello world !</value>
+    </labels>
+    <labels>
+        <fullName>SamLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sambhav Bholah</shortDescription>
+        <value>666 armada</value>
+    </labels>
 </CustomLabels>

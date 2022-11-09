@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Sambhav Bholah
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Sambhav Bholah
+-->
+<template >
+
+    <lightning-card  title="Loaned Vehicle Currently Assigned 🚗 ">
+        <h2 onclick={checkLoan}><b>Record ID:</b> {recordid}</h2>
+            <template if:true={vehicles.data}>
+                <!-- <lightning-button onclick={terminateLoan}> Terminate Loan </lightning-button> -->
+                <lightning-datatable 
+                    key-field="Id"
+                    data={vehicles.data}
+                    columns={columns}
+                >
+               </lightning-datatable>
+            </template>
+    </lightning-card>
+    <br><br><br>
+</template>

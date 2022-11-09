@@ -1,0 +1,58 @@
+<!--
+  @description       : 
+  @author            : Sambhav Bholah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Sambhav Bholah
+-->
+<aura:component>
+        <!-- child registers event -->
+        <aura:registerEvent name="editInvoiceEvent" type="c:EditInvoiceEvent"/>
+        
+        <aura:attribute name="latestInvoice" type="Invoice__c"/>
+        <aura:attribute name="showModel" type="Boolean"  />
+
+        <lightning:button label="show Latest Invoice" onclick="{!c.openModel}" />
+
+        <aura:if isTrue="{!v.showModel}">        
+            <!-- model down here 📝 -->
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                        
+                        <span class="slds-assistive-text">Cancel and close</span>
+                    </button>
+                    
+                    <div class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"     onclick="{! c.closeModel }" alternativeText="close"
+                                            variant="bare-inverse"     class="slds-modal__close"/>
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+                    </div>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <!-- ❗❗❗❗❗ main code goes here -->
+                            <lightning:recordEditForm 
+                            recordId="{!v.latestInvoice.Id}"
+                             objectApiName="Invoice__c"
+                             onsuccess="{!c.handleSuccess}"
+                             >
+                                <lightning:messages />
+                                <lightning:inputField fieldName='Name' />
+                                <lightning:inputField fieldName='AmountWithVat__c' />
+                                <!-- <lightning:inputField fieldName="FirstName" />
+                                <lightning:inputField fieldName="LastName" />
+                                <lightning:inputField fieldName="Email" /> -->
+                                <lightning:button class="slds-m-top_small"  type="submit" name="update" label="Update" />
+                            </lightning:recordEditForm>
+                        <!-- ❗❗❗❗❗ main code goes here -->
+                    </div>
+
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button_brand" onclick="{!c.closeModel}">Close this</button>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+        </aura:if> 
+</aura:component>

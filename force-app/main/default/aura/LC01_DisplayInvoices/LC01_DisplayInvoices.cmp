@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : Sambhav Bholah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Sambhav Bholah
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"  controller="LC01_InvoiceController">
+
+    <!-- parent listens to child -->
+    <aura:handler name="childEvent" event="c:EditInvoiceEvent" action="{!c.handleEditInvoiceEvent}"/>
+    
+    <aura:attribute name="latestInvoice" type="Invoice__c"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="lstInvoice" type="List"/>
+    <aura:attribute name="showModel" type="Boolean" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleClick}"/>
+
+    <!-- front ends starts 😁  -->
+    
+    <h1> List of invoices related to your case ! 😎</h1>
+        
+    <c:LC01_LatestInvoice latestInvoice="{!v.latestInvoice}" showModel="{!v.showModel}" />
+    <c:LC01_ViewAllInvoices lstInvoice ="{!v.lstInvoice}" />  
+</aura:component>

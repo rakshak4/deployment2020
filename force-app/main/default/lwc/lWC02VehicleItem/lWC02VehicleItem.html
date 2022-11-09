@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : Sambhav Bholah
+  @group             : 
+  @last modified on  : 11-08-2022
+  @last modified by  : Sambhav Bholah
+-->
+<template>
+    <lightning-card  title="Your vehicles 🚗 ">
+        <h2><b>Record ID:</b> {recordid}</h2>
+            <p>{vehicles.Make__c}</p>
+            <template if:true={vehicles.data}>
+                <!-- <lightning-button onclick={terminateLoan}> Terminate Loan </lightning-button> -->
+                <lightning-datatable 
+                    key-field="Id"
+                    data={vehicles.data}
+                    columns={columns}
+                >
+               </lightning-datatable>
+            </template>
+    </lightning-card>
+</template>

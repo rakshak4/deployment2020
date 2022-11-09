@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Sambhav Bholah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Sambhav Bholah
+-->
+<aura:component>
+
+    <aura:attribute name="lstInvoice" type="List"/>
+    <aura:iteration items="{!v.test}" var="invoice">
+          <lightning:recordViewForm 
+          recordId="{!invoice.Id}" 
+          objectApiName="Invoice__c"
+          >
+            <lightning:messages />
+            <lightning:outputField fieldName='Name' />
+            <lightning:outputField fieldName='AmountWithVat__c' />
+            <!-- <lightning:button class="slds-m-top_small"  type="submit" name="update" label="Update2" /> -->
+          </lightning:recordViewForm>
+    </aura:iteration>
+        
+        
+</aura:component>
