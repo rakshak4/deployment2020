@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : Souhayl Johar
+  @group             : 
+  @last modified on  : 03/11/2022
+  @last modified by  : Souhayl Johar
+  Modifications Log
+  Ver   Date         Author          Modification
+  1.0   03/11/2022   Souhayl Johar   Initial Version
+-->
+<template>
+qqqq
+    <template for:each={vehicles} for:item="vehicle">
+        <p key={vehicle.Id}>{vehicle.Vehicle__r.Name}</p>
+        <p key={vehicle.Id}>{vehicle.Vehicle__r.EngineCapacity__c}</p>
+        <p key={vehicle.Id}>{vehicle.Vehicle__r.InsuranceEndDate__c}</p>
+        <p key={vehicle.Id}>{vehicle.Vehicle__r.InsuranceStartDate__c}</p>
+        <p key={vehicle.Id}>{vehicle.Vehicle__r.InsuredTo__c}</p>
+
+    </template>
+    
+</template>

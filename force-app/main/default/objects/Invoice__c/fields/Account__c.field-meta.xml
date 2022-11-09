@@ -5,10 +5,9 @@
     <externalId>false</externalId>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Invoices</relationshipLabel>
-    <relationshipName>Invoices</relationshipName>
+    <relationshipLabel>Invoice</relationshipLabel>
+    <relationshipName>Invoice</relationshipName>
     <required>false</required>
-    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

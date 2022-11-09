@@ -1,0 +1,32 @@
+<!--
+  @description       : 
+  @author            : Souhayl Johar
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Souhayl Johar
+  Modifications Log
+  Ver   Date         Author          Modification
+  1.0   28/10/2022   Souhayl Johar   Initial Version
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="LC03_InvoiceRelatedToCase">
+    <aura:handler name="init" value="{!this}" action="{!c.DoInit}" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="invoices" type="List" />
+    
+    <aura:attribute name="latestInvoice" type="Invoice__c" />
+    <aura:attribute name="showModal" type="Boolean" default="false" />
+
+    <lightning:button label="Update Latest Invoice" onclick="{!c.handleClick}" />
+
+    <aura:iteration items="{!v.invoices}" var="invoice">
+        <c:LC04_ViewInvoices  currentInvoiceid = "{!invoice.Id}"/>
+
+    </aura:iteration>
+
+    <aura:if isTrue="{!v.showModal}">
+        <!-- <c:ChildComponentName childVariableName = {! Value in parent} -->
+        <c:LC05_EditInvoices childClatestInvoiceId ="{!v.latestInvoice.Id}" ></c:LC05_EditInvoices>
+        
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+</aura:component>

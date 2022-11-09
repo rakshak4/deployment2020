@@ -1,3 +1,13 @@
+/**
+ * @description       : 
+ * @author            : Souhayl Johar
+ * @group             : 
+ * @last modified on  : 08/11/2022
+ * @last modified by  : Souhayl Johar 
+ * Modifications Log
+ * Ver   Date         Author          Modification
+ * 1.0   08/11/2022   Souhayl Johar   Initial Version
+**/
 public with sharing class AP03_TestPJO Implements Database.AllowsCallouts{
 
 static AccountDetails currAccount = new AccountDetails();
@@ -80,7 +90,6 @@ static AccountDetails currAccount = new AccountDetails();
             public String SLASerialNumber;
             public String upsellOpportunity;
             public String website;
-            // Error 
             public String errMessage;
             public Datetime dateSynchro;
         }

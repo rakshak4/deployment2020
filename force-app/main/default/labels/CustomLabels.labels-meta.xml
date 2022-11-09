@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>NarmeenLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Narmeen Label</shortDescription>
+        <value>Hello, Narmeen Here</value>
+    </labels>
+    <labels>
+        <fullName>souhaylLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>souhayl Label</shortDescription>
+        <value>Hello, My Name is Souhayl</value>
+    </labels>
 </CustomLabels>
