@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : Ashita Gopaul
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Ashita Gopaul
+-->
+<template>
+    <template if:true={details}>
+          
+        <template for:each={details} for:item="detail">
+            <p key={detail.Id}>{detail.Id}</p>
+        </template>
+    </template>
+    
+</template>

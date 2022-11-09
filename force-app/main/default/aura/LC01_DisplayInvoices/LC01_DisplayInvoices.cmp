@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : Ashita Gopaul
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Ashita Gopaul
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="LC01_InvoiceController">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="invoices" type="List" />    
+    <aura:attribute name="LatestInvoice" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="childEvent" event="c:compEvent" action="{!c.handleChildEvent}" />
+
+    <c:LC03_UpdateLatestInvoice LatestInvoice="{!v.LatestInvoice}"></c:LC03_UpdateLatestInvoice>
+    <aura:iteration items="{!v.invoices}" var="invoice">
+        <c:LC02_ViewAllInvoices invoiceRecordId="{!invoice.Id}"></c:LC02_ViewAllInvoices>
+    </aura:iteration>
+
+    
+
+
+    
+    
+</aura:component>

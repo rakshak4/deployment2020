@@ -1,0 +1,4 @@
+.icon-color {
+    --sds-c-icon-color-foreground: var(--color);
+    --sds-c-icon-color-background: transparent;
+}
