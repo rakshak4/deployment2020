@@ -1,17 +1,20 @@
-/**
- * @description       : Trigger on Case
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
-**/
-trigger CaseTrigger on Case(after update) {
+trigger CaseTrigger on Case (after update, before insert, before update) {
     CaseTriggerHandler handler = new CaseTriggerHandler();
 
     if(Trigger.isAfter && Trigger.isUpdate){
-        handler.handleAfterUpdate(trigger.new, trigger.OldMap);
+        handler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
+
     }
 
+    //second trigger to prevent create/update on Case.LoanedVehicle__c
+    if (Trigger.isBefore && Trigger.isInsert) {
+        handler.handlerBeforeInsert(Trigger.new);
+
+    }
+
+    if(Trigger.isBefore && Trigger.isUpdate) {
+        handler.handlerBeforeUpdate(Trigger.old);
+
+
+    }
 }

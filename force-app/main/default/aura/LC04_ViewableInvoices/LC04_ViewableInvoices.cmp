@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Asma Ghanty
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Asma Ghanty
+  Modifications Log
+  Ver   Date         Author        Modification
+  1.0   10-31-2022   Asma Ghanty   Initial Version
+-->
+<aura:component>
+    
+
+    <aura:attribute name="childInvoiceRecordId" type="String" />
+
+        <lightning:recordViewForm recordId="{!v.childInvoiceRecordId}" objectApiName="Invoices__c">
+
+            <div class="slds-box">
+                <lightning:outputField fieldName="InvoiceNumber__c" />
+                <lightning:outputField fieldName="InvoiceDate__c" />
+                <lightning:outputField fieldName="Account__c" />
+                <lightning:outputField fieldName="AmountWithVat__c" />
+                <lightning:outputField fieldName="Contact" />
+                <lightning:outputField fieldName="AmountWithoutVat__c" />
+            </div>
+
+        </lightning:recordViewForm>
+
+   
+
+</aura:component>

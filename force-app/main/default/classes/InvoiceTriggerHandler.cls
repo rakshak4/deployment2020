@@ -1,29 +1,45 @@
 /**
- * @description       : Handler cass for InvoiceTrigger
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : 
+ * @author            : Asma Ghanty
+ * @group             : 
+ * @last modified on  : 11-08-2022
+ * @last modified by  : Asma Ghanty
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
- **/
+ * Ver   Date         Author        Modification
+ * 1.0   10-26-2022   Asma Ghanty   Initial Version
+**/
 public with sharing class InvoiceTriggerHandler {
-    /**
-     * @description method to handle AfterInsert Event
-     * @author Rakshak Rajjoo | 25/10/2022
-     * @param List<Invoice__c> lstInv
-     **/
-    public void handleAfterInsert(List<Invoice__c> lstInvNew) {
-        List<Invoice__c> lstInvWithCon = new List<Invoice__c>();
 
-        for (Invoice__c inv : lstInvNew) {
-            if (inv.Contact__c != null) {
-                lstInvWithCon.add(inv);
+    public void handlerAfterInsert(List<Invoices__c> lstInv){
+        List<Invoices__c> lstInv2 = new List<Invoices__c>();
+
+        for (Invoices__c inv : lstInv) {
+            if(inv.Contact__c != null)
+            {
+                lstInv2.add(inv);
+            }   
+        }
+
+        // if(lstInv2.size()> 0)
+        // {
+        //     AP03_SendingEmailForUseCase02.sendMail(lstInv2);
+        // }
+    }
+    
+ 
+
+    public void handlerBeforeDelete(List<Invoices__c>lstInvoicesDel){
+        List<Invoices__c> lstInvPaymentDate = new List<Invoices__c>();
+        for(Invoices__c inv: lstInvoicesDel){
+            if(inv.LastPaymentDate__c!=null){
+                if(inv.LastPaymentDate__c > System.now()){
+                lstInvPaymentDate.add(inv);
             }
         }
-
-        if (lstInvWithCon.size() > 0) {
-            AP02_SendEmail.sentEmailToContact(lstInvWithCon);
-        }
+        
     }
+    if(lstInvPaymentDate.size()>0){
+        AP03_ErrorMsgOnDelete.PreventDelInvoice(lstInvPaymentDate);
+    }
+}
 }

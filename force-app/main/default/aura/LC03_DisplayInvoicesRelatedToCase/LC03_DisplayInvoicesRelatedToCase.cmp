@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : Asma Ghanty
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Asma Ghanty
+  Modifications Log
+  Ver   Date         Author        Modification
+  1.0   10-28-2022   Asma Ghanty   Initial Version
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId"
+    controller="LC03_RetrieveInvoicesToCase">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="lstInvoices" type="List" />
+    <aura:attribute name="latestInvoices" type="Invoices__c" />
+    <aura:attribute name="showModal" type="Boolean" default="false" />
+
+    <aura:handler name="editInvoiceEvent" event="c:LC03_EditInvoiceEvent" action="{!c.handleEditInvoiceEvent}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleLoad}" />
+
+    <!-- button to open popup -->
+    <lightning:button onclick="{!c.openModel}" class="slds-m-top_small" variant="brand" name="update"
+        label="Update Latest Invoice" />
+
+    <!-- iterating through list of invoices and displaying in view Form -->
+    <aura:iteration items="{!v.lstInvoices}" var="invoices">
+
+        <!-- Child component to display viewable invoices -->
+        <c:LC04_ViewableInvoices childInvoiceRecordId="{!invoices.Id}"></c:LC04_ViewableInvoices>
+    </aura:iteration>
+
+    <!-- POP UP -->
+    <aura:if isTrue="{!v.showModal}">
+
+        <c:LC05_EditLatestInvoices childLatestInvoiceId="{!v.latestInvoices.Id}"></c:LC05_EditLatestInvoices>
+
+    </aura:if>
+</aura:component>
