@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Kanigan Somadoo
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Kanigan Somadoo
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   10-28-2022   Kanigan Somadoo   Initial Version
+-->
+<aura:component controller="LC01_RetrieveInvoicesRelatedToCase" implements="flexipage:AvailableForRecordHome,force:lightningQuickAction,force:hasRecordId">
+    <aura:attribute name="lstInvoicesRelatedToCase" type="List"/>
+    <aura:attribute name="latestInvoice" type="String"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="showModal" type="Boolean" default="false"/>
+   
+    <aura:handler name="init" value="{!this}" action="{!c.initInvoices}"/>
+    <aura:handler name="editInvoiceEvent" event="c:LC01_EditInvoiceEvent" action="{!c.handleEditInvoiceEvent}"/>
+    
+    <c:LC01_EditLatestInvoice latestInvId="{!v.latestInvoice.Id}" showModal="False" ></c:LC01_EditLatestInvoice>
+
+    <aura:iteration items="{!v.lstInvoicesRelatedToCase}" var="invoice">
+        <c:LC01_ViewAllInvoicesRelatedToCase recordId="{!invoice.Id}"></c:LC01_ViewAllInvoicesRelatedToCase>  
+    </aura:iteration>
+
+<!-- PUT MODAL INSIDE AN AURA IF TO DETERMINE WHETHER TO SHOW OR HIDE THE MODAL -->
+
+
+</aura:component>

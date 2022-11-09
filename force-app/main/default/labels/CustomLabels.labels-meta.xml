@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>KaniLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Custom label for Ant deployment training</shortDescription>
+        <value>value for custom label KaniLabel</value>
+    </labels>
+    <labels>
+        <fullName>YadhavLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Yadhav Label</shortDescription>
+        <value>Some Text</value>
+    </labels>
 </CustomLabels>

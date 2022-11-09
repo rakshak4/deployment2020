@@ -1,4 +1,4 @@
-<aura:event type="COMPONENT">
-    <aura:attribute name="hasBeenSubmitted" type="Boolean"/>
-    <aura:attribute name="hasBeenCompleted" type="Boolean"/>
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="hasBeenSubmitted" type="String"/>
+    <aura:attribute name="hasBeenCompleted" type="String"/>
 </aura:event>

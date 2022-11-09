@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
-    <description>Update fields on vehicle</description>
+    <apiVersion>55.0</apiVersion>
     <environments>Default</environments>
     <interviewLabel>VehUpdateFields {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Veh Update Fields</label>
+    <label>VehUpdateFields</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -25,9 +24,8 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <description>Specify the loan status when a loaned vehicle is added or updated.</description>
-        <name>UpdateLoanStatus</name>
-        <label>Update Loan Status</label>
+        <name>UpdateVehicleStatus</name>
+        <label>Update Vehicle Status</label>
         <locationX>176</locationX>
         <locationY>158</locationY>
         <filterLogic>and</filterLogic>
@@ -39,9 +37,9 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>status__c</field>
+            <field>Status__c</field>
             <value>
-                <stringValue>loaned</stringValue>
+                <stringValue>Loaned</stringValue>
             </value>
         </inputAssignments>
         <object>Vehicle__c</object>
@@ -50,12 +48,20 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>UpdateLoanStatus</targetReference>
+            <targetReference>UpdateVehicleStatus</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
-        <description>Vehicle Id</description>
+        <description>Record of loaned vehicle on case</description>
+        <name>LoanVehicle</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Vehicle__c</objectType>
+    </variables>
+    <variables>
         <name>VehicleId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>

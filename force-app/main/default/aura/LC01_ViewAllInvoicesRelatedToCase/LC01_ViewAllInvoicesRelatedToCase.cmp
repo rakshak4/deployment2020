@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Kanigan Somadoo
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Kanigan Somadoo
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   10-31-2022   Kanigan Somadoo   Initial Version
+-->
+<aura:component>
+
+<aura:attribute name="recordId" type="String"/>
+
+    <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Invoice__c">
+        <lightning:messages />
+        <lightning:outputField fieldName="Name" />
+        <lightning:outputField fieldName="AmountWithoutVat__c" />
+        <lightning:outputField fieldName="AmountWithVat__c" />
+        <lightning:outputField fieldName="LastPaymentDate__c" />
+    </lightning:recordViewForm>
+
+</aura:component>
