@@ -1,29 +1,37 @@
 /**
- * @description       : Handler cass for InvoiceTrigger
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * @description       : Handler for the invoice trigger
+ * @author            : Rayhaan Beeharry
+ * @group             :
+ * @last modified on  : 10-26-2022
+ * @last modified by  : Rayhaan Beeharry
  **/
 public with sharing class InvoiceTriggerHandler {
-    /**
-     * @description method to handle AfterInsert Event
-     * @author Rakshak Rajjoo | 25/10/2022
-     * @param List<Invoice__c> lstInv
-     **/
-    public void handleAfterInsert(List<Invoice__c> lstInvNew) {
-        List<Invoice__c> lstInvWithCon = new List<Invoice__c>();
-
-        for (Invoice__c inv : lstInvNew) {
-            if (inv.Contact__c != null) {
-                lstInvWithCon.add(inv);
+    public void handleAfterInsert(List<Invoice__c> lstInvoice) {
+        // Get the full records for the Invoices to obtain the relationships
+        List<Invoice__c> lstInvoiceToUse = new List<Invoice__c>();
+        for(Invoice__c inv : lstInvoice){
+            if(inv.Contact__c!=null){
+                lstInvoiceToUse.add(inv);
             }
         }
+        System.debug(lstInvoiceToUse);
+        AP04_SendMailForInvoiceCreation.sendMail(lstInvoiceToUse);
+    }
 
-        if (lstInvWithCon.size() > 0) {
-            AP02_SendEmail.sentEmailToContact(lstInvWithCon);
+    public void handleBeforeDelete(List<Invoice__c> lstInvoice){
+        List<Invoice__c> lstInvoiceCannotDelete = new List<Invoice__c>();
+        for(Invoice__c inv : lstInvoice){
+            if(inv.LastPaymentDate__c > Date.today()){
+                lstInvoiceCannotDelete.add(inv);
+            }
         }
+        System.debug(lstInvoiceCannotDelete);
+        AP05_PreventDeletion.preventDeletion(lstInvoiceCannotDelete);
+    }
+
+    public static Boolean checkIfAgent() {
+        String profileName = [SELECT Name FROM Profile WHERE Id = :UserInfo.getProfileId()][0].Name;
+        Boolean isAgent;
+        return profileName == 'Agent';
     }
 }

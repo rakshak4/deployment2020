@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Rayhaan Beeharry
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Rayhaan Beeharry
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="LC01_GetRelatedInvoices">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="invoices" type="List"/>
+    <aura:attribute name="latestInvoice" type="Invoice__c"/>
+    
+
+    <aura:handler name="init" value="{!this}" action="{!c.displayInvoices}"/>
+    <lightning:accordion aura:id="accordion"  allowMultipleSectionsOpen="true">
+      <lightning:accordionSection name="latest" label="Latest Invoice">
+        <c:LC01_LatestInvoice invoice="{!v.latestInvoice}" childUpdatedEvent="{!c.showUpdateResult}"/>
+      </lightning:accordionSection>
+
+      <lightning:accordionSection name="all" label="All invoices">
+        <aura:iteration items="{!v.invoices}" var="invoice">
+            <lightning:accordionSection name="{!invoice.Id}" label="{!invoice.Name}">
+                <c:LC01_ViewInvoice invoice="{!invoice}"/>
+             </lightning:accordionSection>
+        </aura:iteration>
+      </lightning:accordionSection>
+    </lightning:accordion>
+    
+</aura:component>

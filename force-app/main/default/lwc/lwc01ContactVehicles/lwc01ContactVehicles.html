@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Rayhaan Beeharry
+  @group             : 
+  @last modified on  : 11-04-2022
+  @last modified by  : Rayhaan Beeharry
+-->
+<template>
+    
+    <template if:true={dataReady}>
+        <article class="slds-card">    
+            <div class="slds-card__body">
+                <h1>List of Vehicles</h1>
+        <lightning-accordion
+        allow-multiple-sections-open
+        active-section-name={activeSections}
+    >
+        <template for:each={vehicles} for:item="vehicle">
+            <lightning-accordion-section  key={vehicle.Id}  name={vehicle.RegistrationNumber__c} label={vehicle.Make__c}>
+                <c-lwc01-vehicle-item vehicle={vehicle}>
+                </c-lwc01-vehicle-item>
+            </lightning-accordion-section>
+        </template>
+    </lightning-accordion>
+</div>
+</article>
+    </template>
+</template>

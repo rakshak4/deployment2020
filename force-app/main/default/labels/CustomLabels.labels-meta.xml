@@ -44,4 +44,25 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>ANTTest</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ANT test</shortDescription>
+        <value>Rayhaan</value>
+    </labels>
+    <labels>
+        <fullName>AntTesting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Ant Testing</shortDescription>
+        <value>Alfaaz</value>
+    </labels>
+    <labels>
+        <fullName>InvoiceLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invoice label</shortDescription>
+        <value>Invoices</value>
+    </labels>
 </CustomLabels>

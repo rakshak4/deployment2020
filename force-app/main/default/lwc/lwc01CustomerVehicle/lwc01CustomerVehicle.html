@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : Rayhaan Beeharry
+  @group             : 
+  @last modified on  : 11-08-2022
+  @last modified by  : Rayhaan Beeharry
+-->
+<template>
+    <template if:true= {dataReady}>     
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+          <article class="slds-card">
+            <div class="slds-card__header slds-grid">              
+                <div class="slds-media__body">
+                  <h2 class="slds-card__header-title slds-align_absolute-center slds-border_bottom">
+                      <span>Customer Vehicle</span>
+                  </h2>
+                </div>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">                  
+                 <p class="slds-m-bottom_xx-small">Vehicle Number: {customerVehicle.Name}</p> 
+                 <p class="slds-m-bottom_xx-small">Make: {customerVehicle.Make__c}</p>
+                 <p class="slds-m-bottom_xx-small">Make: {customerVehicle.Model__c}</p>
+                 <p class="slds-m-bottom_xx-small">Registration Number: {customerVehicle.RegistrationNumber__c}</p>
+                 <p class="slds-m-bottom_xx-small">Insured to: {customerVehicle.InsuredTo__c}</p>
+                 <p class="slds-m-bottom_xx-small">Insurance start date: {customerVehicle.InsuranceStartDate__c}</p>
+                 <p class="slds-m-bottom_xx-small">Insurance start date: {customerVehicle.InsuranceEndDate__c}</p>
+            </div>            
+          </article>
+        </div>
+        <div class="slds-col">
+          <c-lwc01-loaned-vehicle record-id={recordId}></c-lwc01-loaned-vehicle>          
+        </div>
+      </div>
+    </template>
+</template>

@@ -1,23 +1,23 @@
+/**
+ * @description       : 
+ * @author            : Rayhaan Beeharry
+ * @group             : 
+ * @last modified on  : 11-07-2022
+ * @last modified by  : Rayhaan Beeharry
+**/
 public with sharing class LWC02_TerminateLoan {
-
     @AuraEnabled
-    public static Vehicle__c terminateLoan(Id recordId){
-        Case myCase = [SELECT ContactId FROM Case WHERE Id =: recordId];
-        Vehicle__c loanVehicle = [SELECT Contact__c,EndDate__c,Status__c,StartDate__c FROM
-        Vehicle__c WHERE Contact__c =: myCase.ContactId
-        AND Recordtype.Name = 'Loaned Vehicle'];
-        Contact customer = [SELECT Loaned_Vehicle__c FROM Contact WHERE Id =: loanVehicle.Contact__c];
-
-        customer.Loaned_Vehicle__c = null;
-        update customer;
-
-       loanVehicle.StartDate__c = null;
-       loanVehicle.EndDate__c = null;
-        loanVehicle.Contact__c = null;
-        loanVehicle.status__c = 'available';
-        update loanVehicle;
-
-        return loanVehicle;
+    public static String removeLoanedVehicle(Id caseId,Vehicles__c loanedVehicle) {
+        try {
+            Case caseToUpdate = new Case (Id=caseId, LoanedVehicle__c= null);
+            update caseToUpdate;
+            loanedVehicle.status__c='available';
+            loanedVehicle.LoanStartDate__c= null;
+            loanedVehicle.LoanEndDate__c= null;
+            update loanedVehicle;
+            return 'Case: '+caseToUpdate.Id + ' was updated.\nVehicle: '+loanedVehicle.Id+' was updated';
+        } catch (Exception e) {
+            return 'error';
+        }           
     }
-
 }

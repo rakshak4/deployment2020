@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Rayhaan Beeharry
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Rayhaan Beeharry
+-->
+<aura:component>
+    <aura:attribute name="invoice" type="Invoice__c"/>
+    <div class="slds-box">    
+        <lightning:recordViewForm recordId="{!v.invoice.Id}" objectApiName="Invoice__c">
+            <lightning:messages />
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-align_absolute-center">
+                    <lightning:outputField fieldName="Name"/>                                   
+                    <lightning:outputField fieldName="Account__c" />      
+                    <lightning:outputField fieldName="Contact__c" />  
+               
+               
+                    <lightning:outputField fieldName="InvoiceDate__c" /> 
+                    <lightning:outputField fieldName="AmountWithVat__c" /> 
+                    <lightning:outputField fieldName="AmountWithoutVat__c" /> 
+                
+                 </div>
+                </div>
+        </lightning:recordViewForm>
+    </div>
+</aura:component>

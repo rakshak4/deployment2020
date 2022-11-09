@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : Rayhaan Beeharry
+  @group             : 
+  @last modified on  : 11-08-2022
+  @last modified by  : Rayhaan Beeharry
+-->
+<template >  
+  <!-- <template  if:true={dataReady}> -->
+  <article class="slds-card">
+    <div class="slds-card__header">      
+      <h2 class="slds-card__header-title">Loaned Vehicle</h2>          
+    </div>
+    
+    <div class="slds-card__body slds-card__body_inner">     
+      <template if:true={loanedVehicle}>
+        <div class={colour}>
+          <p>{loanedVehicle.Name}</p>
+          <p>{loanedVehicle.Make__c}</p>
+          <p>{loanedVehicle.Model__c}</p>
+          <p>{loanedVehicle.YearOfVehicle__c}</p>
+          <p>{loanedVehicle.LoanStartDate__c}</p>
+          <p>{loanedVehicle.LoanEndDate__c}</p>
+          <p>{loanedVehicle.LoanedTo__c}</p>
+        </div>
+      </template>
+      <template if:false={loanedVehicle}>
+        <h1>No loaned vehicle</h1>
+      </template>
+      <c-lwc02-terminate-loan disabled={disableButton}></c-lwc02-terminate-loan>
+    </div>
+  </article>
+
+
+    
+   
+  <!-- </template> -->
+ 
+</template>
