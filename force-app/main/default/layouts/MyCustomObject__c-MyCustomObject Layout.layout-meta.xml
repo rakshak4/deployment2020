@@ -16,6 +16,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>BhoovanyuDhomah__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>AaliyahMohungoo__c</field>
             </layoutItems>
             <layoutItems>
