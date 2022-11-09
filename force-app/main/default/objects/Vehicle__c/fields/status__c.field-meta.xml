@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>status__c</fullName>
+    <fullName>Status__c</fullName>
     <externalId>false</externalId>
     <label>Status</label>
     <required>false</required>
@@ -12,14 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>available</fullName>
+                <fullName>Availalble</fullName>
                 <default>false</default>
-                <label>available</label>
+                <label>Availalble</label>
             </value>
             <value>
-                <fullName>loaned</fullName>
+                <fullName>Loaned</fullName>
                 <default>false</default>
-                <label>loaned</label>
+                <label>Loaned</label>
             </value>
         </valueSetDefinition>
     </valueSet>

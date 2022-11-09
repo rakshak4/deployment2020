@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Ayman Rummun
+  @group             : 
+  @last modified on  : 11-07-2022
+  @last modified by  : Ayman Rummun
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   11-02-2022   Ayman Rummun   Initial Version
+-->
+<template>
+    
+    <lightning-card title="Customer Vehicle" icon-name="custom:custom31">
+        <div class="slds-m-around_medium" style=(gettermethod)>
+            <!-- <template if:true={vehicles.data}> -->
+                <template for:each={vehicles} for:item="vehicle">
+                    <p key={vehicle.Id}>
+                        Make: {vehicle.Make__c} </br>
+                        Model: {vehicle.Model__c}
+                    </p>
+                </template>
+            <!-- </template> -->
+            <!-- <template if:true={vehicles.error}>
+                <c-error-panel errors={vehicles.error}></c-error-panel>
+            </template> -->
+        </div>
+        <div><c-loanedvehicle cid={recordId}></c-loanedvehicle></div>
+    </lightning-card>
+</template>

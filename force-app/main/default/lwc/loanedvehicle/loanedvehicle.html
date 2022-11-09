@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Ayman Rummun
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Ayman Rummun
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   11-03-2022   Ayman Rummun   Initial Version
+-->
+<template>
+    <lightning-card title="Loan Vehicle" icon-name="custom:custom31">
+        <div class="slds-m-around_medium">
+            <!-- <template if:true={vehicles.data}> -->
+                <template for:each={loanedvehicles} for:item="veh">
+                    <p key={veh.Id}>
+                        Make: {veh.Make__c} </br>
+                        Model: {veh.Model__c}
+                    </p>
+                    <p key={veh.Id}><lightning-input name='veh.Make__c' label="First Name"></lightning-input></p>
+                </template>
+            <!-- </template> -->
+            <!-- <template if:true={vehicles.error}>
+                <c-error-panel errors={vehicles.error}></c-error-panel>
+            </template> -->
+        </div>
+    </lightning-card>
+</template>

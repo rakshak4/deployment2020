@@ -1,0 +1,91 @@
+<!--
+  @description       : 
+  @author            : Ayman Rummun
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Ayman Rummun
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   10-28-2022   Ayman Rummun   Initial Version
+-->
+<aura:component implements = "flexipage:availableForAllPageTypes,force:hasRecordId" controller="LC01_DisplayInvoicesController">
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="invoiceList" type="List" />
+    <aura:attribute name="latestInvoice" type="Invoice__c" />
+    <aura:attribute name="showModal" type="Boolean" default="false"/>
+    <aura:attribute name="moreText" type="String" default="Aura training is the best :)"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleComponentEvent}" />
+
+    <aura:handler name="childEvent" event="c:compEvent" action="{!c.handleChildEvent}" />
+
+    <!-- <lightning:accordion allowMultipleScetionOpen="true" aura:id="accordionInvoices">
+        <lightning:accordionSection name="{!v.latestInvoice.Name}" label="{!v.latestInvoice.Name}">
+            
+        </lightning:accordionSection>
+    </lightning:accordion> -->
+
+    <c:LC01_EditRecord invoiceRecord = "{!v.latestInvoice}" />
+    <c:LC01_ViewInvoices invoiceRecordList = "{!v.invoiceList}" /> 
+
+
+    <!-- <lightning:button label="Update Latest Invoice1" onclick="{!c.openModel}" class="slds-m-top_medium" variant="brand"/> -->
+
+
+    <!-- <aura:iteration items="{!v.invoiceList}" var="invoice">
+        <lightning:recordViewForm recordId="{!invoice.Id}" objectApiName="Invoice__c">
+          <lightning:messages />
+          <lightning:outputField fieldName="Name" />
+          <lightning:outputField fieldName="Account__c" />
+          <lightning:outputField fieldName="Contact__c" />
+          <lightning:outputField fieldName="InvoiceDate__c" />
+          <lightning:outputField fieldName="AmountWithVat__c" />
+          <lightning:outputField fieldName="AmountWithoutVat__c" />
+        </lightning:recordViewForm>
+    </aura:iteration> -->
+
+    <!-- <aura:if isTrue="{!v.showModal}">  
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+
+                <lightning:buttonIcon iconName="utility:close"     onclick="{! c.closeModel }" alternativeText="close"
+                variant="bare-inverse"     class="slds-modal__close"/>
+
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+                </div>
+
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:recordEditForm recordId="{!v.lastestInvoice.Id}" objectApiName="Invoice__c">
+                        <lightning:messages />
+                        <lightning:outputField fieldName="Name"/>
+                        <lightning:inputField fieldName="Account__c" />
+                        <lightning:inputField fieldName="Contact__c" />
+                        <lightning:inputField fieldName="InvoiceDate__c" />
+                        <lightning:inputField fieldName="AmountWithVat__c" />
+                        <lightning:inputField fieldName="AmountWithoutVat__c" />
+                        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                    </lightning:recordEditForm>
+                </div>
+                
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+                    <button class="slds-button slds-button_brand">Save</button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+        
+
+        <aura:set attribute="else">
+        <p></p>
+        </aura:set>
+    </aura:if>  -->
+
+    
+
+    
+
+</aura:component>

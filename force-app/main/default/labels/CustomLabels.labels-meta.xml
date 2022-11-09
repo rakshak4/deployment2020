@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>AsmaLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Asma Label</shortDescription>
+        <value>Hmmm I am testing ANT.</value>
+    </labels>
+    <labels>
+        <fullName>AymanLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Ayman Label</shortDescription>
+        <value>Helloooo! How are you?</value>
+    </labels>
 </CustomLabels>
