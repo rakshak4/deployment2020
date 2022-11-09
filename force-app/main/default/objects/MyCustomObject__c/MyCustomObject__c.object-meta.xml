@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>MyCustomObject</label>
     <nameField>
-        <label>M Name</label>
+        <label>MyCustomObject Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>MyCustomObjects</pluralLabel>
