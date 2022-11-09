@@ -36,12 +36,24 @@
                 <field>Email__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>Region__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ProofOfAddress__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MyDate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ActivationDate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DeactivationDate__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -204,29 +216,19 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>NewContact</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>FeedItem.ContentPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewEvent</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.LinkPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>NewContact</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>NewCase</actionName>
@@ -249,34 +251,9 @@
             <sortOrder>7</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.PollPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>10</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.QuestionPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>11</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SendEmail</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>12</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>IncludeOffline</actionName>
+            <actionName>JigsawSearch</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>14</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeOwnerOne</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>15</sortOrder>
+            <sortOrder>19</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>AccountHierarchy</actionName>
@@ -292,11 +269,6 @@
             <actionName>SendEmail</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>18</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>JigsawSearch</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>19</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>ChangeRecordType</actionName>
@@ -329,14 +301,54 @@
             <sortOrder>25</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>EmailHighlightAction</actionName>
-            <actionType>ProductivityAction</actionType>
-            <sortOrder>26</sortOrder>
+            <actionName>NewEvent</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.LinkPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.PollPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.QuestionPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>11</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>IncludeOffline</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeOwnerOne</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>15</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>WebsiteHighlightAction</actionName>
             <actionType>ProductivityAction</actionType>
             <sortOrder>27</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>EmailHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
+            <sortOrder>26</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -447,7 +459,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Energy_Audit__c.Account__c</relatedList>
+        <relatedList>Vehicle__c.InsuredTo__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Vehicle__c.LoanedTo__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

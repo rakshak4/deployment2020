@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>AP01_CreateInvoice</apexClass>
+        <apexClass>AP01_UpdateAccount</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -9,19 +9,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AP02_SendEmail_TEST</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>AP03_SyncAccountInfo</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>AP03_SyncAccountInfo_SAU_TEST</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>AP03_SyncAccountInfo_TEST</apexClass>
+        <apexClass>AP03_PreventDeletion</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -29,19 +17,27 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>AP03_UserStories</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AP04_CaseTrigger_LWC</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AP04_GetVehicleDetails</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AP05_DisplayVehicles</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AP06_GetListOfVehicles</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>AP_TestDataFactory</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>AccountTriggerHandler</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>BAT01_RenewalReminder</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>BAT01_RenewalReminder_TEST</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -49,39 +45,27 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InvoiceTriggerDeleteHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InvoiceTriggerHandler</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>LC01_CaseRelatedInvoiceCtrl</apexClass>
+        <apexClass>LC03_InvoiceRelatedToCaseController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>LC01_CaseRelatedInvoiceCtrl_Test</apexClass>
+        <apexClass>LC03_InvoiceRelatedToCaseControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>LWC01_DetailScreen</apexClass>
+        <apexClass>MockHttpResponseGenerator</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>LWC02_TerminateLoan</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>LWC03_DisplayVehicles</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SyncAccountMock</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Test</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>WS01_AccountDetails</apexClass>
+        <apexClass>WS01_GetInformationREST</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>false</custom>
@@ -117,12 +101,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.MyDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.NumberofLocations__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.ProofOfAddress__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Region__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -147,32 +141,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CalloutCredentials__mdt.ClientID__c</field>
+        <field>AccountSetting__mdt.clientId__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CalloutCredentials__mdt.ClientSecret__c</field>
+        <field>AccountSetting__mdt.clientsecret__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CalloutCredentials__mdt.Endpoint__c</field>
+        <field>AccountSetting__mdt.password__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CalloutCredentials__mdt.Password__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CalloutCredentials__mdt.Token__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CalloutCredentials__mdt.Username__c</field>
+        <field>AccountSetting__mdt.username__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -182,27 +166,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.ActivationDate__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.DamageDetail__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Case.DamageType__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.DateTimeIncident__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.DeactivationDate__c</field>
+        <field>Case.DateAndTimeOfIncident__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -212,7 +181,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.LoanedVehicle__c</field>
+        <field>Case.LoanVehicle__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -226,28 +195,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.RepairDetails__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.RepairPossible__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.ReturnedDate__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Case.SLAViolation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.Tech_HasLoanVehicle__c</field>
+        <field>Case.Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -256,9 +210,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.account_region__c</field>
-        <readable>false</readable>
+        <editable>true</editable>
+        <field>Contact.Email1__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -277,17 +231,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.Loaned_Vehicle__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contact.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.testPicklist__c</field>
+        <field>Contact.Stage__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -297,17 +246,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Event.Property__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Invoice__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Invoice__c.AmountWithVat__c</field>
+        <field>Invoice__c.AmountwithVat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Invoice__c.AmountWithoutVat__c</field>
+        <field>Invoice__c.AmountwithoutVat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -333,6 +287,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Invoice__c.Vat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Invoice__c.Vehicle__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -406,6 +365,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.Property__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>User.DB_Region__c</field>
         <readable>false</readable>
@@ -427,33 +391,38 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Vehicle__c.EndDate__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Vehicle__c.EngineCapacity__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Vehicle__c.InsuranceEndDate__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Vehicle__c.InsuranceStartDate__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Vehicle__c.InsuredTo__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
+        <field>Vehicle__c.LoanEndDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Vehicle__c.LoanStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Vehicle__c.LoanedTo__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -472,7 +441,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Vehicle__c.StartDate__c</field>
+        <field>Vehicle__c.RegistrationNumber__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Vehicle__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -482,7 +456,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Vehicle__c.TotalLoss__c</field>
+        <field>Vehicle__c.Total_loss__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vehicle__c.VehicleNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -492,12 +471,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Vehicle__c.YearVehicle__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Vehicle__c.status__c</field>
+        <field>Vehicle__c.YearOfVehicle__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <flowAccesses>
@@ -510,15 +484,7 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>CSEAddLoanVehicleToCase</flow>
-    </flowAccesses>
-    <flowAccesses>
-        <enabled>false</enabled>
-        <flow>Case_AfterSave</flow>
-    </flowAccesses>
-    <flowAccesses>
-        <enabled>false</enabled>
-        <flow>Claim_Add_Loan_Vehicle</flow>
+        <flow>CseAddLoanVehicle</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -540,13 +506,16 @@
         <recordType>Account.Individual</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>AccountSetting__mdt-Account Setting Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>AlternativePaymentMethod-Alternative Payment Method Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ApiAnomalyEventStore-API Anomaly Event Store Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>AppointmentInvitation-Appointment Invitation Layout</layout>
+        <layout>AppointmentInvitation-Présentation de l%27invitation à un rendez-vous</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Asset-Asset Layout</layout>
@@ -582,9 +551,6 @@
         <layout>BusinessBrand-Business Brand Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CalloutCredentials__mdt-Callout Credentials Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Campaign-Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -615,10 +581,7 @@
         <layout>CaseClose-Close Case Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>CaseMilestone-Case Milestone Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>CollaborationGroup-Group Layout</layout>
+        <layout>CaseMilestone-Présentation du jalon de requête</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CommunityMemberLayout-Community Member Layout</layout>
@@ -651,7 +614,7 @@
         <layout>Contract-Contract Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ContractLineItem-Contract Line Item Layout</layout>
+        <layout>ContractLineItem-Présentation de l%27élément de ligne de contrat</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CredentialStuffingEventStore-Credential Stuffing Event Store Layout</layout>
@@ -684,19 +647,20 @@
         <layout>EmailMessage-Email Message Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Energy_Audit__c-Energy Audit Layout</layout>
+        <layout>EngagementChannelType-Présentation du type de canal d%27engagement</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>EngagementChannelType-Engagement Channel Type Layout</layout>
+        <layout>Entitlement-Présentation de l%27autorisation</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Entitlement-Entitlement Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>EntityMilestone-Object Milestone Layout</layout>
+        <layout>EntityMilestone-Présentation du jalon d%27objet</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Event-Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Event-Showing Layout</layout>
+        <recordType>Event.Showing</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>FeedItem-Feed Item Layout</layout>
@@ -792,6 +756,9 @@
         <layout>ProductConsumptionSchedule-Product Consumption Schedule Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Property__c-Property Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>QuickText-Quick Text Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -837,10 +804,10 @@
         <layout>ServiceAppointment-Service Appointment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ServiceAppointmentGroup-Service Appointment Group Layout</layout>
+        <layout>ServiceAppointmentGroup-Présentation Groupe de rendez-vous de service</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ServiceContract-Service Contract Layout</layout>
+        <layout>ServiceContract-Présentation du contrat de service</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ServiceResource-Service Resource Layout</layout>
@@ -855,7 +822,7 @@
         <layout>ServiceTerritoryMember-Service Territory Member Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>ServiceTerritoryRelationship-Service Territory Relationship Layout</layout>
+        <layout>ServiceTerritoryRelationship-Présentation Relation du territoire de service</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SessionHijackingEventStore-Session Hijacking Event Store Layout</layout>
@@ -885,7 +852,7 @@
         <layout>User-User Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>UserAlt-User Profile Layout</layout>
+        <layout>UserAlt-Présentation Profil de l%27utilisateur</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>UserProvAccount-User Provisioning Account Layout</layout>
@@ -897,15 +864,15 @@
         <layout>UserProvisioningRequest-User Provisioning Request Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Vehicle__c-Customer Vehicle</layout>
-        <recordType>Vehicle__c.Customer_Vehicle</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Vehicle__c-Loaned Vehicle</layout>
-        <recordType>Vehicle__c.Loaned_Vehicle</recordType>
+        <layout>Vehicle__c-Vehicle Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Vehicle__c-Vehicle Layout</layout>
+        <recordType>Vehicle__c.CustomerVehicle</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Vehicle__c-Vehicle Layout</layout>
+        <recordType>Vehicle__c.LoanedVehicle</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>WebCart-Cart Layout</layout>
@@ -938,10 +905,10 @@
         <layout>WorkPlanTemplateEntry-Work Plan Template Entry Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>WorkProcedure-Work Procedure Layout</layout>
+        <layout>WorkProcedure-Présentation Procédure de travail</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>WorkProcedureStep-Work Procedure Step Layout</layout>
+        <layout>WorkProcedureStep-Présentation Étape de procédure de travail</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>WorkStep-Work Step Layout</layout>
@@ -953,7 +920,7 @@
         <layout>WorkType-Work Type Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>WorkTypeExtension-Work Type Extension Layout</layout>
+        <layout>WorkTypeExtension-Présentation Extension de type de travail</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>WorkTypeGroup-Work Type Group Layout</layout>
@@ -973,12 +940,17 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <recordType>Vehicle__c.Customer_Vehicle</recordType>
+        <recordType>Event.Showing</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Vehicle__c.CustomerVehicle</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Vehicle__c.Loaned_Vehicle</recordType>
+        <recordType>Vehicle__c.LoanedVehicle</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <userLicense>Work.com Only</userLicense>

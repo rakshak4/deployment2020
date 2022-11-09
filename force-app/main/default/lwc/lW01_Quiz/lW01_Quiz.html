@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : Narmeen Nehor
+  @group             : 
+  @last modified on  : 04/11/2022
+  @last modified by  : Narmeen Nehor
+  Modifications Log
+  Ver   Date         Author          Modification
+  1.0   04/11/2022   Narmeen Nehor   Initial Version
+-->
+<template>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" border="1" cellspacing="0" cellpadding="0" bordercolor="#ccc" style="border-collapse:collapse;">
+        <thead>
+        <tr>
+            <th>Model</th>
+            <th>Registration Number</th>
+            <th>Insurance Start Date</th>
+            <th>Insurance End Date</th>
+        </tr>
+        </thead>
+    
+    <tbody>
+    
+    <template for:each={records} for:item="veh">
+    
+        <tr key={veh.Id}>
+    
+            <td>{veh.Model__c}</td>
+            <td>{veh.RegistrationNumber__c}</td>
+            <td>{veh.InsuranceStartDate__c}</td>
+            <td>{veh.InsuranceEndDate__c}</td>
+        </tr>
+    
+    </template>
+    
+    </tbody>
+    
+    </table>
+</template>

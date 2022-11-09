@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Narmeen Nehor
+  @group             : 
+  @last modified on  : 05/11/2022
+  @last modified by  : Narmeen Nehor
+  Modifications Log
+  Ver   Date         Author          Modification
+  1.0   05/11/2022   Narmeen Nehor   Initial Version
+-->
+<template>
+    <lightning-card title="Accordion Section" icon-name="standard:contact">
+        <lightning-accordion active-section-name="X">
+            <template for:each={vehicledetails} for:item="veh">
+            <lightning-accordion-section key={veh.Id} name={veh.Id} label={veh.Model__c}>
+                    <div>
+                        <lightning-icon icon-name="custom:custom31" title="custom31" style="color: '{veh.Colour__c}'"></lightning-icon>
+                        <p>Model__c : {veh.Model__c}</p>
+                        <p>RegistrationNumber__c : {veh.RegistrationNumber__c}</p>
+                        <p>InsuranceStartDate__c : {veh.InsuranceStartDate__c}</p>
+                        <p>InsuranceEndDate__c : {veh.InsuranceEndDate__c}</p>
+                    </div>
+            </lightning-accordion-section>
+        </template>
+        </lightning-accordion>
+    </lightning-card>
+</template>

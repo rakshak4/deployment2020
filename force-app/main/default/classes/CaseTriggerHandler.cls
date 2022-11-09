@@ -1,31 +1,39 @@
 /**
- * @description       :
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * @File Name          : CaseTriggerHandler.cls
+ * @Description        : As an agent, i want an invoice to be created after a claim has been processed so as to issue payment to the customer
+ * @Author             : Narmeen Nehor
+ * @Group              :
+ * @Last Modified By   : Narmeen Nehor
+ * @Last Modified On   : 25/10/2022
+ * @Modification Log   :
+ *==============================================================================
+ * Ver         Date                     Author      Modification
+ *==============================================================================
+ * 1.0    25-10-2022, HH:MM:SS      SNA      Initial Version
  **/
+
 public with sharing class CaseTriggerHandler {
-    /**
-    * @description Method to handle after update Event
-    * @author Rakshak Rajjoo | 25/10/2022
-    * @param List<Case> lstCasNew
-    * @param Map<Id Case> mapCasOld
-    **/
-    public void handleAfterUpdate(List<Case> lstCasNew, Map<Id, Case> mapCasOld) {
-        List<Case> lstCasPayment = new List<Case>();
-        for (Case casNew : lstCasNew) {
-            Case casOld = mapCasOld.get(casNew.Id);
+  public void handleAfterUpdate(List<Case> lstNewCas, Map<Id, Case> mapOldCas) {
+    List<Invoice__c> lstInvoice = new List<Invoice__c>();
 
-            if (casNew.Status != casOld.Status && casNew.Status == 'Payment') {
-                lstCasPayment.add(casNew);
-            }
-        }
+    for (Case casNew : lstNewCas) {
+      Case caseRecOld = mapOldCas.get(casNew.id);
 
-        if (lstCasPayment.size() > 0) {
-            AP01_CreateInvoice.createInvoiceFromCase(lstCasPayment);
+      if (casNew.Status != caseRecOld.Status) {
+        if (casNew.Status == 'Payment') {
+          Invoice__c inv = new Invoice__c();
+
+          inv.Account__c = casNew.AccountId;
+          inv.Contact__c = casNew.ContactId;
+          lstInvoice.add(inv);
+
+
         }
+      }
     }
+
+    if (!lstInvoice.isEmpty()) {
+        insert lstInvoice;
+      }
+  }
 }

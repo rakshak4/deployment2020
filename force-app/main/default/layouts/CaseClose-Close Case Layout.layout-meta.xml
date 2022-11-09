@@ -20,7 +20,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DateTimeIncident__c</field>
+                <field>Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DateAndTimeOfIncident__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LoanVehicle__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -28,31 +36,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DamageDetail__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RepairPossible__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RepairDetails__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ReturnedDate__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Vehicle__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LoanedVehicle__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>account_region__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

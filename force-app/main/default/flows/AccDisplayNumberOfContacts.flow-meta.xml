@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
-        <description>increment counter</description>
+        <description>Increment counter</description>
         <name>IncrementCounter</name>
         <label>Increment Counter</label>
         <locationX>264</locationX>
@@ -18,9 +18,9 @@
             <targetReference>LoopThroughListOfRelatedContacts</targetReference>
         </connector>
     </assignments>
-    <description>Display number of Contacts</description>
+    <description>Display number of contacts</description>
     <environments>Default</environments>
-    <interviewLabel>AccDisplayNumberOfContacts {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Acc {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccDisplayNumberOfContacts</label>
     <loops>
         <description>Loop Through List Of Related Contacts</description>
@@ -34,7 +34,7 @@
             <targetReference>IncrementCounter</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>DisplayNumberOfContact</targetReference>
+            <targetReference>DisplayNumberOfContacts</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -81,8 +81,8 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
-        <name>DisplayNumberOfContact</name>
-        <label>Display Number Of Contact</label>
+        <name>DisplayNumberOfContacts</name>
+        <label>Display Number Of Contacts</label>
         <locationX>176</locationX>
         <locationY>614</locationY>
         <allowBack>true</allowBack>
@@ -90,7 +90,7 @@
         <allowPause>true</allowPause>
         <fields>
             <name>NumberOfContacts</name>
-            <fieldText>&lt;p&gt;Number of Contacts : &lt;strong&gt;{!ContactCounter}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Number of Contacts: &lt;strong&gt;{!ContactCounter}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>

@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : Narmeen Nehor
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Narmeen Nehor
+  Modifications Log
+  Ver   Date         Author          Modification
+  1.0   31/10/2022   Narmeen Nehor   Initial Version
+-->
+<aura:component>
+    <aura:attribute name="childClatestInvoiceId" type="String" />
+    <aura:attribute name="showModal" type="Boolean" />
+
+    <!--Register event to be sent to parent-->
+    <aura:registerEvent name="editInvoiceEvent" type="c:LC06_EditInvoiceEvent"/>
+
+<aura:if isTrue="{!v.showModal}">
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+        <div class="slds-modal__header">
+        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+        </div>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <lightning:recordEditForm recordId="{!v.childClatestInvoiceId}" objectApiName="Invoice__c" onsuccess="{!c.handleSuccess}">
+                <lightning:messages />
+                <!-- <lightning:outputField fieldName="id" /> -->
+                <lightning:inputField fieldName="Name" />
+                <lightning:inputField fieldName="InvoiceDate__c" />
+                <lightning:inputField fieldName="Account__c" />
+                <lightning:inputField fieldName="AmountwithVat__c" />
+                <lightning:inputField fieldName="Contact__c" />
+                <lightning:inputField fieldName="AmountwithoutVat__c" />
+                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update"/>
+            </lightning:recordEditForm> 
+        </div>
+        <div class="slds-modal__footer">
+        <!-- <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+        <button class="slds-button slds-button_brand">Save</button> -->
+        </div>
+        </div>
+        </section>
+    </aura:if>
+
+</aura:component>

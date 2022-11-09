@@ -46,19 +46,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Mobile__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Email__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Loaned_Vehicle__c</field>
+                <field>Mobile__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>testPicklist__c</field>
+                <field>Email1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Stage__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -179,16 +179,6 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>ChangeOwnerOne</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>16</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>RequestUpdate</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>17</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>FeedItem.ContentPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -239,6 +229,11 @@
             <sortOrder>10</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>EmailHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
+            <sortOrder>23</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>XClean</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>11</sortOrder>
@@ -264,6 +259,16 @@
             <sortOrder>15</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>ChangeOwnerOne</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>16</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>RequestUpdate</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>17</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>18</sortOrder>
@@ -287,11 +292,6 @@
             <actionName>SmsHighlightAction</actionName>
             <actionType>ProductivityAction</actionType>
             <sortOrder>22</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>EmailHighlightAction</actionName>
-            <actionType>ProductivityAction</actionType>
-            <sortOrder>23</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -399,11 +399,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Vehicle__c.Contact__c</relatedList>
+        <relatedList>Invoice__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Invoice__c.Contact__c</relatedList>
+        <relatedList>Vehicle__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
