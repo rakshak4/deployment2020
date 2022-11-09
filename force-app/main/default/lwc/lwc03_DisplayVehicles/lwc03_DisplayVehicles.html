@@ -1,20 +1,42 @@
+<!--
+  @description       : 
+  @author            : Bhoovanyu Dhomah
+  @group             : 
+  @last modified on  : 11-05-2022
+  @last modified by  : Bhoovanyu Dhomah
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   11-04-2022   Bhoovanyu Dhomah   Initial Version
+-->
 <template>
-    
-    <template for:each={lstVehicles} for:item="vehicle">  
+    <template if:true={vehicles}>
+        <template for:each={vehicles} for:item="vehicle">
 
-            <c-lwc03-vehicle-item key={vehicle} vehicle={vehicle}></c-lwc03-vehicle-item>
-            <!-- <lightning-accordion   allow-multiple-sections-open  style="background-color: white;">
+          
 
-                <lightning-accordion-section name={vehicle.Name} label={vehicle.Make__c} style="font-weight: bold;">
-                        <div class="slds-media__figure">
-                            <lightning-icon icon-name="custom:custom31" class={vehicle.Colour__c} style="--sds-c-icon-color-background: white;" title="Vehicle"></lightning-icon>
-                        </div>
-                        <div> Vehicle Model: {vehicle.Model__c} </div>
-                        <div> Vehicle RegistrationNumber__c: {vehicle.RegistrationNumber__c} </div>
-                        <div> Vehicle InsuranceStartDate__c: {vehicle.InsuranceStartDate__c} </div>
-                        <div> Vehicle InsuranceEndDate__c: {vehicle.InsuranceEndDate__c} </div>
+
+            <lightning-accordion key={vehicle.Id} active-section-name="A">
+                <lightning-accordion-section  name={vehicle.Model__c}  label={vehicle.Model__c} >
+                    <!-- <span class="slds-icon_container slds-icon-custom-custom31" title="Description of icon when needed">
+                        <svg class="slds-icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/custom-sprite/svg/symbols.svg#custom31"></use>
+                        </svg>
+                      </span> -->
+                      <!-- <span style="color: {vehicle.Colour__c} "> -->
+                        <lightning-icon icon-name="custom:custom31" title="custom31" icon-color={vehicle.Colour__c}></lightning-icon>
+                      <!-- </span> -->
+                      
+                    <div class="slds-box slds-theme_shade">
+                        <p><c-lwc03_-Vehicle-Item key={vehicle.Id} vehicle={vehicle}></c-lwc03_-Vehicle-Item></p>
+                    </div>
                 </lightning-accordion-section>
+                <!-- More accordion sections here -->
+            </lightning-accordion>
 
-            </lightning-accordion> -->
+            
+        </template>
     </template>
+
+    <!-- <c-Vehicle-Item vehicles={vehicles2}></c-Vehicle-Item> -->
+
 </template>

@@ -1,9 +1,4 @@
-.Red{
-    --sds-c-icon-color-foreground: red;
-}
-.Blue{
-    --sds-c-icon-color-foreground: blue;
-}
-.Black{
-    --sds-c-icon-color-foreground: black;
-}
+/* .my-icon {
+     --sds-c-icon-color-foreground-default: orange; 
+    --sds-c-icon-color-background: ;
+} */

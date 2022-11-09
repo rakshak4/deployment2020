@@ -1,17 +1,27 @@
 /**
- * @description       : Trigger on Case
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * @File Name          : CaseTrigger.trigger
+ * @Description        : <short description>
+ * @Author             : Bhoovanyu Dhomah
+ * @Group              : 
+ * @Last Modified By   : Bhoovanyu Dhomah
+ * @Last Modified On   : 10-26-2022
+ * @Modification Log   : 
+ *==============================================================================
+ * Ver         Date                     Author      Modification
+ *==============================================================================
+ * 1.0    DD-MMM-YYYY, HH:MM:SS      <TRIGRAM>      Initial Version
 **/
-trigger CaseTrigger on Case(after update) {
-    CaseTriggerHandler handler = new CaseTriggerHandler();
-
+trigger CaseTrigger on Case (after update, after insert, before insert, before update) {
+    CaseTriggerHandler handler  = new CaseTriggerHandler();
     if(Trigger.isAfter && Trigger.isUpdate){
-        handler.handleAfterUpdate(trigger.new, trigger.OldMap);
+        handler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
+
     }
+    if(Trigger.isBefore && (Trigger.isInsert || Trigger.isUpdate)){
+        handler.handleBeforeInsert(Trigger.new);
+    }
+    
+
+
 
 }

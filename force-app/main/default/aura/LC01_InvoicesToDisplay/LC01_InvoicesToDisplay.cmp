@@ -1,0 +1,59 @@
+<!--
+  @description       : 
+  @author            : Bhoovanyu Dhomah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Bhoovanyu Dhomah
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   10-28-2022   Bhoovanyu Dhomah   Initial Version
+-->
+<aura:component>
+    
+    <aura:attribute name="invoice" type="Object"/>
+    <aura:attribute name="showButton" type="boolean" default="false"/>
+    <aura:registerEvent name="childEvent" type="c:childEvent" />
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+
+    
+    <!-- <p>{!v.invoice.Id}</p> -->
+    <!-- <lightning:button onclick="{! c.handleShowActiveSectionName }" label="Show Active Section Name"/>
+    <lightning:button onclick="{! c.handleSetActiveSectionC }" label="Open Section C"/> -->
+
+    
+        <!-- <c:LC01_InvoicesToDisplay invoices="{!v.invoiceLatest}" /> -->
+        <lightning:accordion aura:id="accordion" activeSectionName="">
+        
+    
+            <!-- <aura:iteration items="{!v.invoices}" var="invoice" indexVar="index"> -->
+                <lightning:accordionSection name="{!v.invoice.Id}" label="{!v.invoice.Id}">
+                <!-- <aura:if isTrue="{! index == 0 }">
+                -->
+                <aura:if isTrue="{!v.showButton}">
+                    <lightning:button label="Display Edit Form" title="Display Edit Form" onclick="{!c.callModal}"/>
+                </aura:if>
+
+                <lightning:recordViewForm recordId="{!v.invoice.Id}" objectApiName="Invoice__c">
+                <div class="slds-box">
+                    <lightning:messages />
+                    <lightning:outputField fieldName="Name" />
+                    <lightning:outputField fieldName="InvoiceDate__c" />
+                    <lightning:outputField fieldName="Account__c" />
+                    <lightning:outputField fieldName="AmountWithVat__c" />
+                    <lightning:outputField fieldName="Contact__c" />
+                    <lightning:outputField fieldName="AmountWithoutVat__c" />
+                </div>
+                </lightning:recordViewForm>
+            <!-- </aura:set> -->
+        <!-- </aura:if> -->
+    </lightning:accordionSection>
+            <!-- </aura:iteration> -->
+        
+    </lightning:accordion>
+            <!-- <div class="slds-backdrop slds-backdrop_open" role="presentation"></div> -->
+            <aura:if isTrue="{!v.isModalOpen}">
+                <c:LC01_RecordEditForm invoice="{!v.invoice}" isModalOpen="true" />
+              </aura:if>
+
+    
+</aura:component>

@@ -1,0 +1,62 @@
+<!--
+  @description       : 
+  @author            : Bhoovanyu Dhomah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Bhoovanyu Dhomah
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   10-28-2022   Bhoovanyu Dhomah   Initial Version
+-->
+<aura:component >
+    <aura:attribute name="invoice" type="Object" />
+    <!-- <p>{!invoiceLatest.Id}</p> -->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:registerEvent name="childEvent" type="c:compEvent"/>
+
+    <!-- <lightning:button label="Display Edit Form" title="Display Edit Form" onclick="{! c.callModal}"/> -->
+    
+    
+    
+    <!-- <aura:registerEvent name="childEvent" type="c:compEvent" /> -->
+
+    <aura:if isTrue="{!v.isModalOpen}">
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"> -->
+                <!-- <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true"> -->
+                <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use> -->
+                <!-- </svg> -->
+                <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModal }" alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+
+                <!-- <span class="slds-assistive-text">Cancel and close</span>
+        </button> -->
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:recordEditForm recordId="{!v.invoice.Id}" objectApiName="Invoice__c" onsuccess="{!c.handleSuccess}">
+                        <lightning:messages />
+                        <lightning:inputField fieldName="Name" />
+                        <lightning:inputField fieldName="InvoiceDate__c" />
+                        <lightning:inputField fieldName="Account__c" />
+                        <lightning:inputField fieldName="AmountWithVat__c" />
+                        <lightning:inputField fieldName="Contact__c" />
+                        <lightning:inputField fieldName="AmountWithoutVat__c" />
+                        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                    </lightning:recordEditForm>
+                </div>
+                <!-- <div class="slds-modal__footer">
+        <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+        <button class="slds-button slds-button_brand">Save</button>
+        </div> -->
+            </div>
+            
+        </section>
+
+        <aura:set attribute="else">
+            <span></span>
+        </aura:set>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Bhoovanyu Dhomah
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Bhoovanyu Dhomah
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   11-02-2022   Bhoovanyu Dhomah   Initial Version
+-->
+<template>
+  <template if:true={loanedVeh.LoanedVehicle__r}>
+    <div class={classLoaned}></div>
+    <h3>{loanedVeh.LoanedVehicle__r.Model__c}</h3>
+    <h3>{loanedVeh.LoanedVehicle__r.Make__c}</h3>
+    <a onclick={terminateLoan}><button class="slds-button slds-button_neutral">Terminate Loan</button> </a>
+    
+  </template>
+  <template if:false={loanedVeh.LoanedVehicle__r}>
+    <a onclick={terminateLoan}><button disabled class="slds-button slds-button_neutral">Terminate Loan</button> </a>
+    
+  </template>
+    
+</template>

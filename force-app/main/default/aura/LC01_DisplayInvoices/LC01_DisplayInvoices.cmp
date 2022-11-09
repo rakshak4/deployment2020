@@ -1,0 +1,61 @@
+<!--
+  @description       : 
+  @author            : Bhoovanyu Dhomah
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Bhoovanyu Dhomah
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   10-28-2022   Bhoovanyu Dhomah   Initial Version
+-->
+<aura:component controller="LC01_InvoicesController" implements="flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId">
+    <!-- <aura:attribute name="message" type="String"/> -->
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="invoiceLatest" type="Object"/>
+    <aura:attribute name="invoiceEventReturned" type="Object"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:handler name="childEvent" event="c:compEvent" action="{!c.handleChildEvent}"/>
+    
+    <p>hi {!v.recordId}</p>
+
+    <p> {!v.invoiceLatest.Id}</p>
+    
+    <!-- <lightning:button label="Display Edit Form" title="Display Edit Form" onclick="{! c.callModal}"/> -->
+    <!-- <aura:attribute name="isModalOpen" type="boolean" default="false"/> -->
+    
+    <aura:attribute name="invoices" type="List"/>
+    <!-- <aura:attribute name="invoiceLatest" type="Object"/> -->
+
+    
+    <c:LC01_InvoicesToDisplay invoice="{!v.invoiceLatest}" showButton="true"/>
+    
+    <aura:iteration items="{!v.invoices}" var="invoice" indexVar="index">
+      <!-- <aura:if isTrue="{! index == 0 }">
+        <c:LC01_RecordEditForm invoice="{!invoice}" />
+      </aura:if> -->
+      
+      <!-- <p>{!invoice.Id}</p> -->
+      <c:LC01_InvoicesToDisplay invoice="{!invoice}" />
+    </aura:iteration>
+    
+
+    <!-- TO DO -->
+    <!-- <aura:if isTrue="{!v.isModalOpen}">
+      <c:LC01_RecordEditForm invoice="{!v.invoiceLatest}" isModalOpen="true" />
+    </aura:if> -->
+    
+       
+    <!-- </aura:iteration> -->
+    <!-- <c:ModalPopupExample1/> -->
+    
+    
+
+    <!-- <aura:if isTrue="{!v.isModalOpen}"> -->
+        
+            <!-- <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>     -->
+
+</aura:component>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
-    <description>Update fields on vehicle</description>
+    <apiVersion>55.0</apiVersion>
+    <description>update fields on vehicle</description>
     <environments>Default</environments>
     <interviewLabel>VehUpdateFields {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Veh Update Fields</label>
