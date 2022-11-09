@@ -156,7 +156,7 @@
     <gender>Feminine</gender>
     <label>MyCustomObject</label>
     <nameField>
-        <label>MyCustomObject Name</label>
+        <label>My Custom Object Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>MyCustomObjects</pluralLabel>

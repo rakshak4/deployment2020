@@ -10,9 +10,14 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
+            
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>KaniganSomadoo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DeekshaLuchman__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
