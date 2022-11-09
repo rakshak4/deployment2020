@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 05/11/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   04/11/2022   Akhilesh Ramchurn   Initial Version
+-->
+<template>
+    <div class="container">
+        <lightning-card>
+            <h1>List of Vehicles</h1>
+            <lightning-accordion>
+                <template for:each={vehList} for:item="vehicle">
+                    <lightning-accordion-section key={vehicle.Id} label={vehicle.Make__c}>
+                        <c-vehicle-item vehicle={vehicle}></c-vehicle-item>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+        </lightning-card>
+    </div>
+</template>

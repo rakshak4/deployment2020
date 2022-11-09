@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 05/11/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   03/11/2022   Akhilesh Ramchurn   Initial Version
+-->
+<template>
+    <!-- <lightning-button label="Get Vehicles" onclick={getVehicleLists}></lightning-button> -->
+
+    <template if:true={customerVehicleAvailable}>
+        <!-- <div class="slds-m-vertical_medium"> -->
+        <div>
+            <div class="slds-card">
+                <h1>Damaged Vehicle</h1>
+                <div class="slds-p-around_medium">
+                    <p>{cusVeh.DamagedVehicle__r.Name}</p>
+                    <p>{cusVeh.DamagedVehicle__r.Make__c}</p>
+                    <p>{cusVeh.ClosedDate}</p>
+                    <c-loaned-vehicle recordid={recordId}></c-loaned-vehicle>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </template>
+</template>

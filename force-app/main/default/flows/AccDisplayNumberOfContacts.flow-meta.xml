@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
-        <description>increment counter</description>
         <name>IncrementCounter</name>
         <label>Increment Counter</label>
         <locationX>264</locationX>
@@ -18,9 +17,8 @@
             <targetReference>LoopThroughListOfRelatedContacts</targetReference>
         </connector>
     </assignments>
-    <description>Display number of Contacts</description>
     <environments>Default</environments>
-    <interviewLabel>AccDisplayNumberOfContacts {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Acc {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccDisplayNumberOfContacts</label>
     <loops>
         <description>Loop Through List Of Related Contacts</description>
@@ -57,7 +55,7 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
-        <description>Get related contacts of records</description>
+        <description>Get related records of contacts</description>
         <name>GetRelatedContacts</name>
         <label>Get Related Contacts</label>
         <locationX>176</locationX>
@@ -76,13 +74,11 @@
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Contact</object>
-        <sortField>FirstName</sortField>
-        <sortOrder>Asc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
         <name>DisplayNumberOfContact</name>
-        <label>Display Number Of Contact</label>
+        <label>Display Number of Contact</label>
         <locationX>176</locationX>
         <locationY>614</locationY>
         <allowBack>true</allowBack>
@@ -105,7 +101,6 @@
     </start>
     <status>Active</status>
     <variables>
-        <description>Store the number of contacts related to the Account</description>
         <name>ContactCounter</name>
         <dataType>Number</dataType>
         <isCollection>false</isCollection>
@@ -117,7 +112,6 @@
         </value>
     </variables>
     <variables>
-        <description>Id of the current record</description>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>

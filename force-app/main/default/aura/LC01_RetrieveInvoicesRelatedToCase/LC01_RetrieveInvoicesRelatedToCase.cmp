@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   28/10/2022   Akhilesh Ramchurn   Initial Version
+-->
+<aura:component controller="LC01_RetrieveInvoicesCaseController" implements="force:hasRecordId,flexipage:availableForRecordHome">
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="childEvent" event="c:compEvent" action="{!c.handleChildEvent}"/>
+    
+    <aura:attribute name="invoices" type="List" />
+    <aura:attribute name="latestinvoice" type="Invoice__c"/>
+    
+    
+    
+    <c:LC01_InvoiceModal latestinvoice="{!v.latestinvoice}" />
+    <c:LC01_RelatedInvoices invoices="{!v.invoices}" />
+
+    
+</aura:component>

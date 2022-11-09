@@ -1,0 +1,6 @@
+.blue-icon {
+    --sds-c-icon-color-background: rgb(0, 94, 255);
+}
+.green-icon {
+    --sds-c-icon-color-background: green;
+}

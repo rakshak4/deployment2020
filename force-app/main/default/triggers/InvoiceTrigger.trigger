@@ -1,16 +1,22 @@
 /**
- * @description       : Trigger on Invoice__c Object
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : Trigger when invoice is created
+ * @author            : Akhilesh Ramchurn
+ * @group             : 
+ * @last modified on  : 26/10/2022
+ * @last modified by  : Akhilesh Ramchurn
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
- **/
-trigger InvoiceTrigger on Invoice__c(after insert) {
-    InvoiceTriggerHandler handler = new InvoiceTriggerHandler();
+ * Ver   Date         Author              Modification
+ * 1.0   25/10/2022   Akhilesh Ramchurn   Initial Version
+**/
+trigger InvoiceTrigger on Invoice__c (after insert, before delete) {
 
-    if (Trigger.isAfter && Trigger.isInsert) {
+    InvoiceTriggerHandler handler = new InvoiceTriggerHandler();
+    if(Trigger.isAfter && Trigger.isInsert){
         handler.handleAfterInsert(Trigger.new);
     }
+    
+    if(Trigger.isbefore && Trigger.isDelete){
+        handler.handleBeforeDelete(Trigger.old);
+    }
+
 }

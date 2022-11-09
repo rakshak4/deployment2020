@@ -1,17 +1,21 @@
 /**
- * @description       : Trigger on Case
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : Trigger for claim object
+ * @author            : Akhilesh Ramchurn
+ * @group             : 
+ * @last modified on  : 26/10/2022
+ * @last modified by  : Akhilesh Ramchurn
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * Ver   Date         Author              Modification
+ * 1.0   25/10/2022   Akhilesh Ramchurn   Initial Version
 **/
-trigger CaseTrigger on Case(after update) {
-    CaseTriggerHandler handler = new CaseTriggerHandler();
+trigger CaseTrigger on Case (after update, before insert, before update) {
 
+    CaseTriggerHandler handler = new CaseTriggerHandler();
     if(Trigger.isAfter && Trigger.isUpdate){
-        handler.handleAfterUpdate(trigger.new, trigger.OldMap);
+        handler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
     }
 
+    if((Trigger.isBefore && Trigger.isInsert) || (Trigger.isBefore && Trigger.isUpdate)){
+        handler.handleBeforeCreateUpdate(Trigger.new);
+    }
 }

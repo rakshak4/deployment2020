@@ -2,40 +2,13 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
     <decisions>
-        <description>Check if a record is created or updated</description>
-        <name>Check_Record</name>
-        <label>Check Record</label>
-        <locationX>446</locationX>
-        <locationY>455</locationY>
-        <defaultConnector>
-            <targetReference>CheckFieldsForUpdatedRecords</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>UpdatedRecord</defaultConnectorLabel>
-        <rules>
-            <name>IsNewRecord</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>IsNew</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>CheckFieldsForNewRecords</targetReference>
-            </connector>
-            <label>IsNewRecord</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Check if user has bypass</description>
         <name>CheckBypass</name>
-        <label>Check Bypass?</label>
+        <label>Check Bypass</label>
         <locationX>776</locationX>
         <locationY>335</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>NoBypass</name>
+            <name>BypassNotActive</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Setup.CS_GlobalBypassSetting__c.BypassFlow__c</leftValueReference>
@@ -45,75 +18,85 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_Record</targetReference>
+                <targetReference>CheckRecord</targetReference>
             </connector>
-            <label>No Bypass</label>
+            <label>Bypass Not Active</label>
         </rules>
     </decisions>
     <decisions>
-        <description>create the filter conditions base on the fields</description>
-        <name>CheckFieldsForNewRecords</name>
-        <label>Check Fields For New Records</label>
+        <name>CheckLoanedVehicleSelected_0</name>
+        <label>Check Loaned Vehicle Selected</label>
         <locationX>182</locationX>
         <locationY>575</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>VehicleIsAssigned</name>
+            <name>LoanedVehicleSelected_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
+                <leftValueReference>$Record.LoanedVehicle__r.Id</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>VehicleFieldUpdate</targetReference>
+                <targetReference>Copy_1_of_Set_Vehicle_status</targetReference>
             </connector>
-            <label>Vehicle Is Assigned</label>
+            <label>Loaned Vehicle Selected</label>
         </rules>
     </decisions>
     <decisions>
-        <description>create the filter conditions base on the fields</description>
-        <name>CheckFieldsForUpdatedRecords</name>
-        <label>Check Fields For Updated Records</label>
+        <name>CheckLoanedVehicleSelected_0_0</name>
+        <label>Check Loaned Vehicle Selected</label>
         <locationX>710</locationX>
         <locationY>575</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>VehicleChanged</name>
+            <name>LoanedVehicleSelected_0_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
+                <leftValueReference>$Record.LoanedVehicle__r.Id</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>SetVehicleStatus_0_0</targetReference>
+            </connector>
+            <label>Loaned Vehicle Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>CheckRecord</name>
+        <label>Check Record</label>
+        <locationX>446</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>CheckLoanedVehicleSelected_0_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Updated</defaultConnectorLabel>
+        <rules>
+            <name>NewRecord</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.LoanedVehicle__c</leftValueReference>
-                <operator>IsChanged</operator>
+                <leftValueReference>IsNew</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>VehicleFieldUpdateOnChange</targetReference>
+                <targetReference>CheckLoanedVehicleSelected_0</targetReference>
             </connector>
-            <label>Vehicle Changed</label>
+            <label>New Record</label>
         </rules>
     </decisions>
     <environments>Default</environments>
     <formulas>
-        <description>check if the case is new record or the vehicle assigned to the case has been changed</description>
-        <name>checkNewOrUpdateVehicleOnCase</name>
-        <dataType>Boolean</dataType>
-        <expression>( IsNew() || ISCHANGED({!$Record.Vehicle__c}) )</expression>
-    </formulas>
-    <formulas>
         <name>IsNew</name>
         <dataType>Boolean</dataType>
-        <expression>IsNEw()</expression>
+        <expression>ISNEW()</expression>
     </formulas>
     <interviewLabel>CseAfterInsertUpdate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CseAfterInsertUpdate</label>
@@ -136,6 +119,48 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Copy_1_of_Set_Vehicle_status</name>
+        <label>Copy 1 of Set Vehicle status</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.LoanedVehicle__r.Name</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>loaned</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Vehicle__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SetVehicleStatus_0_0</name>
+        <label>Set Vehicle status</label>
+        <locationX>578</locationX>
+        <locationY>695</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.LoanedVehicle__r.Name</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>loaned</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Vehicle__c</object>
+    </recordUpdates>
     <start>
         <locationX>650</locationX>
         <locationY>0</locationY>
@@ -147,32 +172,4 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <subflows>
-        <description>Update specific fields for a loaned vehicle</description>
-        <name>VehicleFieldUpdate</name>
-        <label>Vehicle Field Update</label>
-        <locationX>50</locationX>
-        <locationY>695</locationY>
-        <flowName>VehUpdateFields</flowName>
-        <inputAssignments>
-            <name>VehicleId</name>
-            <value>
-                <elementReference>$Record.LoanedVehicle__c</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
-        <description>Update loaned vehicle fields on update</description>
-        <name>VehicleFieldUpdateOnChange</name>
-        <label>Vehicle Field Update On Change</label>
-        <locationX>578</locationX>
-        <locationY>695</locationY>
-        <flowName>VehUpdateFields</flowName>
-        <inputAssignments>
-            <name>VehicleId</name>
-            <value>
-                <elementReference>$Record.LoanedVehicle__c</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
 </Flow>

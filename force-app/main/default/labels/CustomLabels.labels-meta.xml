@@ -44,4 +44,11 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>AkhileshLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Akhilesh Label</shortDescription>
+        <value>waaa neveu</value>
+    </labels>
 </CustomLabels>

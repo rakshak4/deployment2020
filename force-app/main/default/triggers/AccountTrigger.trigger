@@ -1,20 +1,14 @@
-/**************************************************************************************
--- - Author        : Spoon Consulting
--- - Description   : AccountTrigger
---
--- Maintenance History:
---
--- Date         Name  Version  Remarks
--- -----------  ----  -------  -------------------------------------------------------
--- 03-NOV-2022  HMO   1.0     Initial Version
---------------------------------------------------------------------------------------
-**************************************************************************************/
-trigger AccountTrigger on Account (after insert, after update) {
-	AccountTriggerHandler accountHandler = new AccountTriggerHandler();
-    
-    if(Trigger.isAfter){
-        if (Trigger.isInsert){ accountHandler.handleAfterInsert(Trigger.New); }
-        
-        if (Trigger.isUpdate){ accountHandler.handleAfterUpdate(Trigger.New, Trigger.oldMap); }
+/**
+ * @description       :
+ * @author            : Akhilesh Ramchurn
+ * @group             :
+ * @last modified on  : 07/11/2022
+ * @last modified by  : Akhilesh Ramchurn
+ * Modifications Log
+ * Ver   Date         Author              Modification
+ * 1.0   07/11/2022   Akhilesh Ramchurn   Initial Version
+ **/
+trigger AccountTrigger on Account(after insert) {
+    if (Trigger.isAfter && Trigger.isInsert) {
     }
 }

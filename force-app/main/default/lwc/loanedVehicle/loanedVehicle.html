@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 06/11/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   05/11/2022   Akhilesh Ramchurn   Initial Version
+-->
+<template>
+    <template if:true={loanVehicleAvailable}>
+        <h1>Loaned Vehicle</h1>
+        <div>
+            <div class="slds-card changeLoanColor" style="background-color: green">
+                <div class="slds-p-around_medium">
+                    <p style="color: white">{loanVeh.LoanedVehicle__r.Name}</p>
+                    <p style="color: white">{loanVeh.LoanedVehicle__r.Make__c}</p>
+                    <p style="color: white">Loan End Date: {loanVeh.LoanedVehicle__r.LoanEndDate__c}</p>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

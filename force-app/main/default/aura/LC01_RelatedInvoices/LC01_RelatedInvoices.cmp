@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   31/10/2022   Akhilesh Ramchurn   Initial Version
+-->
+<aura:component>
+    <aura:attribute name="invoices" type="List" />
+      
+        <lightning:accordion aura:id="accordion"  allowMultipleSectionsOpen ="true">
+           <lightning:accordionSection name="all" label ="Latest Invoice" > 
+            <aura:iteration items="{!v.invoices}" var="invoice">
+                <lightning:accordionSection name="A" label="{!invoice.Name}">
+                    <lightning:recordViewForm recordId="{!invoice.Id}" objectApiName="Invoice__c">
+                    
+                        <div class="slds-box">
+                            <lightning:outputField fieldName="Name" />
+                            <lightning:outputField fieldName="InvoiceDate__c" />
+                            <lightning:outputField fieldName="Account__c" />
+                            <lightning:outputField fieldName="AmountWithVat__c" />
+                            <lightning:outputField fieldName="Contact__c" />
+                            <lightning:outputField fieldName="AmountWithoutVat__c" />
+                        </div>    
+                    </lightning:recordViewForm>
+           
+            </lightning:accordionSection>
+            </aura:iteration>
+           </lightning:accordionSection> 
+         </lightning:accordion> 
+        
+</aura:component>

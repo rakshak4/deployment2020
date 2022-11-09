@@ -1,0 +1,57 @@
+<!--
+  @description       : 
+  @author            : Akhilesh Ramchurn
+  @group             : 
+  @last modified on  : 31/10/2022
+  @last modified by  : Akhilesh Ramchurn
+  Modifications Log
+  Ver   Date         Author              Modification
+  1.0   28/10/2022   Akhilesh Ramchurn   Initial Version
+-->
+<aura:component>
+    <aura:registerEvent name="childEvent" type="c:compEvent"/>
+    
+    <aura:attribute name="modelIsOpen" type="Boolean"/>
+    <aura:attribute name="latestinvoice" type="Invoice__c"/>
+
+   
+    <lightning:accordion aura:id="accordion"  allowMultipleSectionsOpen ="true">
+        <lightning:accordionSection name="all" label ="Latest Invoice" > 
+            <button class="slds-button slds-button_brand" onclick="{!c.toggleModal}">Update Latest Invoice</button>
+            <aura:if isTrue="{!v.modelIsOpen}">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                <lightning:buttonIcon iconName="utility:close"     onclick="{!c.toggleModal }" alternativeText="close"
+                                                  variant="bare-inverse"     class="slds-modal__close"/>
+                <span class="slds-assistive-text">Cancel and close</span>
+              </button>
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Upate Invoice</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning:recordEditForm recordId="{!v.latestinvoice.Id}" objectApiName="Invoice__c" onsuccess="{!c.handleToast}">
+        
+                    <div class="slds-box">
+                        <lightning:inputField fieldName="Name" />
+                        <lightning:inputField fieldName="InvoiceDate__c" />
+                        <lightning:inputField fieldName="Account__c" />
+                        <lightning:inputField fieldName="AmountWithVat__c" />
+                        <lightning:inputField fieldName="Contact__c" />
+                        <lightning:inputField fieldName="AmountWithoutVat__c" />
+                        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update"  />
+
+                    </div>    
+                </lightning:recordEditForm >
+              </div>
+        
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if> 
+        </lightning:accordionSection>
+    </lightning:accordion>      
+
+     
+
+</aura:component>

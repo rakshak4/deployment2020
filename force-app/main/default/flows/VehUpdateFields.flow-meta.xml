@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
-    <description>Update fields on vehicle</description>
+    <apiVersion>55.0</apiVersion>
     <environments>Default</environments>
     <interviewLabel>VehUpdateFields {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Veh Update Fields</label>
+    <label>VehUpdateFields</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -25,7 +24,6 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <description>Specify the loan status when a loaned vehicle is added or updated.</description>
         <name>UpdateLoanStatus</name>
         <label>Update Loan Status</label>
         <locationX>176</locationX>
@@ -39,7 +37,7 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>status__c</field>
+            <field>Status__c</field>
             <value>
                 <stringValue>loaned</stringValue>
             </value>
@@ -55,7 +53,6 @@
     </start>
     <status>Active</status>
     <variables>
-        <description>Vehicle Id</description>
         <name>VehicleId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
