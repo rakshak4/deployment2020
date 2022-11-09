@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Keny Poisson
+  @group             : 
+  @last modified on  : 11-04-2022
+  @last modified by  : Keny Poisson
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   11-04-2022   Keny Poisson   Initial Version
+-->
+<template>
+
+    
+    <lightning-card  title="Related Vehicle to Contact" icon-name="custom:custom31">
+        <lightning-accordion>
+        <template for:each={vehiclesRelatedToContacts} for:item="vehicle">
+            <p key={vehicle.Id}>Vehicle Model: {vehicle.Model__c}</p>
+            <p key={vehicle.Id}>Engine Capacity: {vehicle.EngineCapacity__c}</p>
+            <p key={vehicle.Id}>Vehicle Make: {vehicle.Make__c}</p>
+            
+        </template>
+    </lightning-accordion>
+        
+    </lightning-card>
+    
+</template>

@@ -1,29 +1,44 @@
 /**
- * @description       : Handler cass for InvoiceTrigger
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : 
+ * @author            : Keny Poisson
+ * @group             : 
+ * @last modified on  : 10-26-2022
+ * @last modified by  : Keny Poisson
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
- **/
+ * Ver   Date         Author         Modification
+ * 1.0   10-25-2022   Keny Poisson   Initial Version
+**/
 public with sharing class InvoiceTriggerHandler {
-    /**
-     * @description method to handle AfterInsert Event
-     * @author Rakshak Rajjoo | 25/10/2022
-     * @param List<Invoice__c> lstInv
-     **/
-    public void handleAfterInsert(List<Invoice__c> lstInvNew) {
-        List<Invoice__c> lstInvWithCon = new List<Invoice__c>();
 
-        for (Invoice__c inv : lstInvNew) {
-            if (inv.Contact__c != null) {
-                lstInvWithCon.add(inv);
+ 
+    
+    public void handleAfterInsert(List<invoice__c> lstInvoice){
+
+              System.debug('Pass API06');
+
+        AP06_mail.sendEmail(lstInvoice);
+        System.debug(lstInvoice);
+
+    }
+
+    public void handleBeforeDelete(List<invoice__c> lstInvoice){
+
+        List<invoice__c> lstThrowError= new List <invoice__c>();
+
+        for (invoice__c inv:lstInvoice){
+            if (inv.LastPaymentDate__c!=null) {
+                if (inv.LastPaymentDate__c>=System.today()) {
+                    lstThrowError.add(inv);
+                    
+                }
+                
             }
         }
 
-        if (lstInvWithCon.size() > 0) {
-            AP02_SendEmail.sentEmailToContact(lstInvWithCon);
+        if (lstThrowError.size()>0) {
+            
+            AP07_ErrorMessage.sendErrorMessage(lstThrowError);
         }
+        
     }
 }

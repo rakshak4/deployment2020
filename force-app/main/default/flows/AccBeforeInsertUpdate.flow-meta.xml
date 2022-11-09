@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
-        <description>Set Active to yes and Activation Date to current datetime</description>
+        <description>set active to yes and activation date to current date time</description>
         <name>SetActiveAndActivationDate</name>
         <label>Set Active And Activation Date</label>
         <locationX>50</locationX>
@@ -22,11 +22,25 @@
             </value>
         </assignmentItems>
     </assignments>
+    <assignments>
+        <description>set desactivation date to today and active to no</description>
+        <name>SetDesactivationDateToToday</name>
+        <label>Set Desactivation Date To Today</label>
+        <locationX>314</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.DesactivationDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
     <decisions>
-        <description>Check Bypass on custom setting</description>
+        <description>Check Bypass on custom settings</description>
         <name>CheckBypass</name>
         <label>Check Bypass</label>
-        <locationX>380</locationX>
+        <locationX>501</locationX>
         <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -40,18 +54,21 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CheckRecord</targetReference>
+                <targetReference>CheckNewRecord</targetReference>
             </connector>
             <label>Bypass Not Active</label>
         </rules>
     </decisions>
     <decisions>
-        <description>Check if new record</description>
-        <name>CheckRecord</name>
-        <label>Check  Record</label>
-        <locationX>182</locationX>
+        <description>check new record</description>
+        <name>CheckNewRecord</name>
+        <label>Check New Record</label>
+        <locationX>248</locationX>
         <locationY>431</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnector>
+            <targetReference>IsChangedActiveandActiveNo</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update</defaultConnectorLabel>
         <rules>
             <name>NewRecord</name>
             <conditionLogic>and</conditionLogic>
@@ -68,14 +85,44 @@
             <label>New Record</label>
         </rules>
     </decisions>
+    <decisions>
+        <description>check if updated active and active no</description>
+        <name>IsChangedActiveandActiveNo</name>
+        <label>IsChanged Active and Active No</label>
+        <locationX>446</locationX>
+        <locationY>551</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isChangedActiveAndValueNo</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetDesactivationDateToToday</targetReference>
+            </connector>
+            <label>isChanged Active And Value No</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
-        <description>Check if record is new</description>
+        <description>check if record is created</description>
         <name>IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
     </formulas>
-    <interviewLabel>Acc {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>AccBeforeInsertUpdate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccBeforeInsertUpdate</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -97,7 +144,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>254</locationX>
+        <locationX>375</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CheckBypass</targetReference>

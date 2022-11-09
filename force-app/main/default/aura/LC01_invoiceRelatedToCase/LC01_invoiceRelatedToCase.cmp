@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Keny Poisson
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Keny Poisson
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   10-28-2022   Keny Poisson   Initial Version
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="AP08_invoiceController">
+    <h1>All invoice related to case</h1>
+
+<aura:handler name="init" value="{!this}" action="{!c.handleClick}"/>
+<lightning:button label="Update Latest Invoice" title="Show Model" onclick="{!c.showModel}"/>
+<aura:attribute name="invoices" type="List"/>
+<aura:attribute name="latestInvoices" type="String"/>
+<aura:attribute name="recordId" type="String" />
+<aura:attribute name="showPopUp" type="Boolean" default="false"/>
+
+<!--Display all invoices from child LC01_AllInvoices-->
+<aura:iteration items="{!v.invoices}" var="invoice">
+   <c:LC03_AllInvoices recordId="{!invoice.Id}"></c:LC03_AllInvoices>
+</aura:iteration>
+
+
+  <!--if showpopup true open the model-->
+ 
+  <c:LC03_LatestInvoices recordId="{!invoice.Id}" showPopUp="False"></c:LC03_LatestInvoices>
+
+</aura:component>

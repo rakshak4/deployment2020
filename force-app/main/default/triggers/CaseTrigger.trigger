@@ -1,17 +1,28 @@
 /**
- * @description       : Trigger on Case
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : Trigger to fire after update on obj case
+ * @author            : Keny Poisson
+ * @group             :
+ * @last modified on  : 10-26-2022
+ * @last modified by  : Keny Poisson
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
-**/
-trigger CaseTrigger on Case(after update) {
-    CaseTriggerHandler handler = new CaseTriggerHandler();
+ * Ver   Date         Author          Modification
+ * 1.0   10-25-2022   Keny Poisson    Initial Version
+ **/
 
-    if(Trigger.isAfter && Trigger.isUpdate){
-        handler.handleAfterUpdate(trigger.new, trigger.OldMap);
-    }
+trigger CaseTrigger on Case(after update,before insert, before update) {
+  CaseTriggerHandler handler = new CaseTriggerHandler();
+
+  if (Trigger.isAfter && Trigger.isUpdate) {
+    handler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
+  }
+
+  if(Trigger.isBefore && Trigger.isInsert ){
+    handler.handleAfterInsertUpdate(Trigger.new);
+  }
+
+  if (Trigger.isBefore && Trigger.isUpdate){
+    handler.handleAfterInsertUpdate(Trigger.new);
+  }
+
 
 }

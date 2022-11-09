@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : Keny Poisson
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Keny Poisson
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   11-03-2022   Keny Poisson   Initial Version
+-->
+<template>
+
+   
+
+    <lightning-card  title="Loaned Vehicle" icon-name="custom:custom31">
+        
+        <template for:each={vehiclesLoan} for:item="vehicle">
+            <p key={vehicle.Id}>Registration Plate: {vehicle.LoanVehicle__r.RegistrationNumber__c}</p>
+            <p key={vehicle.Id}>Model: {vehicle.LoanVehicle__r.Model__c}</p>
+            <p key={vehicle.Id}>Insurance End Date: {vehicle.LoanVehicle__r.InsuranceEndDate__c}</p>
+        </template>
+        
+    </lightning-card>
+    
+</template>
+
+<!-- <header>Loaned Vehicle (Company)</header>
+<div class="container">
+    <template for:each={vehiclesLoan} for:item="vehicle">
+        <p key={vehicle.Id}>Registration Plate: {vehicle.LoanVehicle__r.RegistrationNumber__c}</p>
+        <p key={vehicle.Id}>Model: {vehicle.LoanVehicle__r.Model__c}</p>
+    </template>
+</div>  -->

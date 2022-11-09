@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : Keny Poisson
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Keny Poisson
+  Modifications Log
+  Ver   Date         Author         Modification
+  1.0   11-03-2022   Keny Poisson   Initial Version
+-->
+<template>
+    <lightning-card title="Damage Vehicle Customer" icon-name="custom:custom31">
+        <template for:each={vehicles} for:item="vehicle">
+            <p key={vehicle.Id}>Registration Plate: {vehicle.DamageVehicle__r.RegistrationNumber__c}</p>
+            <p key={vehicle.Id}>Model: {vehicle.DamageVehicle__r.Model__c}</p>
+        </template>
+        <c-get-loaned-vehicle case-id={recordId}></c-get-loaned-vehicle>
+    </lightning-card>
+    
+</template>
