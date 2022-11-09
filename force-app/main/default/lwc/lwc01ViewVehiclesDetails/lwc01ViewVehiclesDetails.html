@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Jason Ramjaya
+-->
+<template>
+    <div >
+        <template if:true={customerVehId}> 
+            <c-lwc01-view-customer-vehicle customer-veh-id={customerVehId}></c-lwc01-view-customer-vehicle>
+        </template>
+
+        <template if:true={loanVehId}>
+            <div class={background}>
+            <c-lwc01-view-loan-vehicle loan-veh-id={loanVehId}></c-lwc01-view-loan-vehicle> 
+            </div>
+        </template>
+
+        <lightning-button 
+            variant="brand"
+            label="Terminate loan"
+            title="Add object"
+            onclick={handleTermination}
+            class="slds-m-left_small"
+            disabled={disableButton}
+        ></lightning-button>
+        
+    </div>
+</template>

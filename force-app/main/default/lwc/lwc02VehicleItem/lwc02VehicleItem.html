@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 11-04-2022
+  @last modified by  : Jason Ramjaya
+-->
+<template>
+    <template if:true={vehicle}>
+        <lightning-icon icon-name="custom:custom31" size="small" class="iconColor"></lightning-icon>
+        <h1>Model: {vehicle.Model__c}</h1>
+        <h1>RegistrationNumber__c: {vehicle.RegistrationNumber__c}</h1>
+        <h1>InsuranceStartDate__c: {vehicle.InsuranceStartDate__c}</h1>
+        <h1>InsuranceEndDate__c: {vehicle.InsuranceEndDate__c}</h1>
+    </template>
+</template>

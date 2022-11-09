@@ -1,0 +1,4 @@
+.iconColor {
+    --sds-c-icon-color-background: transparent;
+    --sds-c-icon-color-foreground: var(--vehicleColour);
+}

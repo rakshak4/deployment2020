@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Jason Ramjaya
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:HasRecordId" controller="LC01_DisplayInvoicesController">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="invoices" type="List"/>
+    <aura:attribute name="invoiceToUpdate" type="Object"/>
+    <aura:attribute name="hasLatest" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="childEvent" event="c:showToastEvent" action="{!c.handleShowToast}"/>
+
+    <c:LC01_DisplayLatestInvoice lastInvoice="{!v.invoiceToUpdate}" hasLatest="{!v.hasLatest}"/>
+
+    <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
+    <aura:iteration items="{!v.invoices}" var="inv">
+      <c:LC01_DisplayInvoiceList invoice="{!inv}"/>
+      <br/>
+      </aura:iteration>
+    </lightning:accordion>
+
+</aura:component>

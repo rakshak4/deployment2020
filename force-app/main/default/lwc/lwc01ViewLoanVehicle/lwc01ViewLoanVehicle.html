@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Jason Ramjaya
+-->
+<template>
+  <div>
+    <template if:true={loanVehId}>
+      <lightning-record-view-form object-api-name="Vehicles__c" record-id={loanVehId}>
+
+        <lightning-output-field field-name="Name"> </lightning-output-field>
+        <lightning-output-field field-name="Tech_RecordTypeVehicle__c"> </lightning-output-field>
+        <lightning-output-field field-name="LoanEndDate__c"> </lightning-output-field>
+        <lightning-output-field field-name="Make__c"> </lightning-output-field>
+        <lightning-output-field field-name="Mileage__c"> </lightning-output-field>
+        <lightning-output-field field-name="Model__c"> </lightning-output-field>
+        <lightning-output-field field-name="RegistrationNumber__c"> </lightning-output-field>
+        <lightning-output-field field-name="status__c"> </lightning-output-field>
+        <lightning-output-field field-name="YearOfVehicle__c"> </lightning-output-field>
+        <lightning-output-field field-name="Warranty__c"> </lightning-output-field>
+
+      </lightning-record-view-form>
+    </template>
+    <lightning-button 
+      variant="brand"
+      label="Terminate loan"
+      title="Add object"
+      onclick={handleTermination}
+      class="slds-m-left_small"
+      disabled={disableButton}
+    ></lightning-button>
+  </div>
+</template>

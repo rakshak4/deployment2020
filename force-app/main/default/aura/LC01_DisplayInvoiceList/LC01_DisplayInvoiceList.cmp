@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Jason Ramjaya
+-->
+<aura:component>
+    <aura:attribute name="invoice" type="Object"/>
+
+    <lightning:recordViewForm recordId="{!v.invoice.Id}" objectApiName="Invoices__c">
+        <lightning:messages />
+        <lightning:accordionSection name="{!v.invoice.Name}" label="{!v.invoice.Name}">
+          <lightning:outputField fieldName="Name"/>
+          <lightning:outputField fieldName="InvoiceDate__c"/>
+          <lightning:outputField fieldName="Account__c"/>
+          <lightning:outputField fieldName="AmountWithVat__c"/>
+          <lightning:outputField fieldName="Contact__c"/>
+          <lightning:outputField fieldName="AmountWithoutVat__c"/>
+      </lightning:accordionSection>
+
+    </lightning:recordViewForm>
+</aura:component>

@@ -55,6 +55,14 @@
                 <behavior>Edit</behavior>
                 <field>ProofOfAddress__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ActivationDate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DeactivationDate__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -284,6 +292,11 @@
             <sortOrder>16</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>20</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>17</sortOrder>
@@ -297,11 +310,6 @@
             <actionName>XClean</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>19</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Share</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>20</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>SendEmail</actionName>
@@ -443,11 +451,19 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Invoice__c.Account__c</relatedList>
+        <relatedList>Vehicles__c.InsuredTo__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Energy_Audit__c.Account__c</relatedList>
+        <relatedList>Vehicles__c.LoanedTo__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Vehicles__c.OwnerAccount__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Invoices__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

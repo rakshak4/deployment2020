@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Jason Ramjaya
+-->
+<template>
+  <div>
+    <template if:true={customerVehId}> 
+      <lightning-record-view-form object-api-name="Vehicles__c" record-id={customerVehId}>
+          <lightning-output-field field-name="Name"> </lightning-output-field>
+          <lightning-output-field field-name="Tech_RecordTypeVehicle__c"> </lightning-output-field>
+          <lightning-output-field field-name="Make__c"> </lightning-output-field>
+          <lightning-output-field field-name="Mileage__c"> </lightning-output-field>
+          <lightning-output-field field-name="Model__c"> </lightning-output-field>
+          <lightning-output-field field-name="RegistrationNumber__c"> </lightning-output-field>
+          <lightning-output-field field-name="status__c"> </lightning-output-field>
+          <lightning-output-field field-name="YearOfVehicle__c"> </lightning-output-field>
+          <lightning-output-field field-name="Warranty__c"> </lightning-output-field>
+      </lightning-record-view-form>
+    </template>
+  </div>
+  <div class={background}>
+    <c-lwc01-view-loan-vehicle loan-veh-id={loanVehId} case-id={recordId} disable-button={disabledButton}></c-lwc01-view-loan-vehicle> 
+  </div>
+</template>

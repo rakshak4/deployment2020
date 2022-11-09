@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Jason Ramjaya
+  @group             : 
+  @last modified on  : 11-06-2022
+  @last modified by  : Jason Ramjaya
+-->
+<template>
+    <lightning-accordion class="example-accordion"
+                         >
+    <template for:each={vehicles} for:item="vehicle">
+
+        
+            <lightning-accordion-section name={vehicle.Make__c} label={vehicle.Make__c} key={vehicle.Id}>
+                
+                <c-lwc02-vehicle-item
+                vehicle={vehicle}
+                >
+                </c-lwc02-vehicle-item>
+
+            </lightning-accordion-section>
+
+        
+    </template>
+</lightning-accordion>
+
+    
+
+</template>

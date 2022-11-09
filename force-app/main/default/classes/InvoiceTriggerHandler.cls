@@ -1,29 +1,34 @@
 /**
- * @description       : Handler cass for InvoiceTrigger
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
- * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
+ * @File Name          : InvoiceTriggerHandle.cls
+ * @Description        : Handler class for trigger on Invoice object
+ * @Author             : Jason Ramjaya
+ * @Group              :
+ * @Last Modified By   : Jason Ramjaya
+ * @Last Modified On   : 10-25-2022
+ * @Modification Log   :
+ *==============================================================================
+ * Ver         Date                     Author      Modification
+ *==============================================================================
+ * 1.0    25-10-2022                    JRA         Initial Version
  **/
 public with sharing class InvoiceTriggerHandler {
     /**
-     * @description method to handle AfterInsert Event
-     * @author Rakshak Rajjoo | 25/10/2022
-     * @param List<Invoice__c> lstInv
+     * @description handler for after insert of invoice trigger
+     * @author Jason Ramjaya | 10-25-2022
+     * @param lstInvs
      **/
-    public void handleAfterInsert(List<Invoice__c> lstInvNew) {
-        List<Invoice__c> lstInvWithCon = new List<Invoice__c>();
+    public void handleAfterInsert(List<Invoices__c> lstInvs) {
 
-        for (Invoice__c inv : lstInvNew) {
-            if (inv.Contact__c != null) {
-                lstInvWithCon.add(inv);
-            }
-        }
+        AP03_CreateInvoice.sendEmail(lstInvs);
+        
+    }
 
-        if (lstInvWithCon.size() > 0) {
-            AP02_SendEmail.sentEmailToContact(lstInvWithCon);
-        }
+    /**
+    * @description handler before delete of invoice 
+    * @author Jason Ramjaya | 10-25-2022 
+    * @param lstInvs 
+    **/
+    public void handleBeforeDelete(List<Invoices__c> lstInvs) {
+        AP03_CreateInvoice.preventInvoiceDelete(lstInvs);
     }
 }
