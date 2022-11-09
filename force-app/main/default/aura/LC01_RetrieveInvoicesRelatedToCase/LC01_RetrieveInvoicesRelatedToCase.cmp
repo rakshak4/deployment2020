@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Chevish Boodhun
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Chevish Boodhun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   10-28-2022   Chevish Boodhun   Initial Version
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="LC01_CaseInvoicesController">
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+  <aura:handler name="childEvent" event="c:compEvent" action="{!c.handleChildEvent}" />
+
+  <aura:attribute name="recordId" type="String" />
+  <aura:attribute name="invoices" type="List" />
+  <aura:attribute name="latestInvoice" type="Invoice__c" />
+
+  <c:LC01_InvoiceModal latestInvoice="{!v.latestInvoice}" />
+  <lightning:accordion>
+      <aura:iteration items="{!v.invoices}" var="invoice">  
+        <c:LC01_RelatedInvoices invoice="{!invoice}" />
+      </aura:iteration>
+  </lightning:accordion>
+    
+</aura:component>

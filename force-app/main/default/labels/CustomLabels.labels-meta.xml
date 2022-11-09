@@ -44,4 +44,18 @@
         <shortDescription>Vehicle Title</shortDescription>
         <value>List of vehicles</value>
     </labels>
+    <labels>
+        <fullName>ChavisLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Chavis Label</shortDescription>
+        <value>Yo</value>
+    </labels>
+    <labels>
+        <fullName>ContactVehicles</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact Vehicles</shortDescription>
+        <value>List of Vehicles</value>
+    </labels>
 </CustomLabels>

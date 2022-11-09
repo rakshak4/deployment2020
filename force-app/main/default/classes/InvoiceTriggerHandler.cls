@@ -1,29 +1,34 @@
 /**
- * @description       : Handler cass for InvoiceTrigger
- * @author            : Rakshak Rajjoo
- * @last modified on  : 25/10/2022
- * @last modified by  : Rakshak Rajjoo
+ * @description       : 
+ * @author            : Chevish Boodhun
+ * @group             : 
+ * @last modified on  : 10-26-2022
+ * @last modified by  : Chevish Boodhun
  * Modifications Log
- * Ver   Date         Author           Modification
- * 1.0   25/10/2022   Rakshak Rajjoo   Initial Version
- **/
+ * Ver   Date         Author            Modification
+ * 1.0   10-25-2022   Chevish Boodhun   Initial Version
+**/
 public with sharing class InvoiceTriggerHandler {
-    /**
-     * @description method to handle AfterInsert Event
-     * @author Rakshak Rajjoo | 25/10/2022
-     * @param List<Invoice__c> lstInv
-     **/
-    public void handleAfterInsert(List<Invoice__c> lstInvNew) {
-        List<Invoice__c> lstInvWithCon = new List<Invoice__c>();
 
-        for (Invoice__c inv : lstInvNew) {
-            if (inv.Contact__c != null) {
-                lstInvWithCon.add(inv);
+    public void handleAfterInsert(List<Invoice__c> lstNewInv) {
+
+        AP04_SendEmailInvoice.sendEmailAfterInvoice(lstNewInv);
+
+    }
+
+    public void handleBeforeDelete(List<Invoice__c> lstOldInv) {
+
+        List<Invoice__c> lstInvDel = new List<Invoice__c>();
+        for (Invoice__c inv : lstOldInv) {
+            if (inv.LastPaymentDate__c > System.now()) {
+                lstInvDel.add(inv);
             }
         }
 
-        if (lstInvWithCon.size() > 0) {
-            AP02_SendEmail.sentEmailToContact(lstInvWithCon);
+        if (lstInvDel.size() > 0) {
+            AP05_PreventInvoiceDelete.preventDelete(lstInvDel);
         }
+
     }
+    
 }

@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Chevish Boodhun
+  @group             : 
+  @last modified on  : 11-04-2022
+  @last modified by  : Chevish Boodhun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   11-04-2022   Chevish Boodhun   Initial Version
+-->
+<template>
+  <lightning-accordion-section label={vehicle.Name}>
+    <lightning-icon icon-name="custom:custom31" style={iconStyle}></lightning-icon>
+    <h1>{vehicle.Model__c}</h1>
+    <h1>{vehicle.RegistrationNumber__c}</h1>
+    <h1>{vehicle.InsuranceStartDate__c}</h1>
+    <h1>{vehicle.InsuranceEndDate__c}</h1>
+  </lightning-accordion-section>
+</template>

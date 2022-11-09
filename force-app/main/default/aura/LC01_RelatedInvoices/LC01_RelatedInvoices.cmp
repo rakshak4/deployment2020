@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : Chevish Boodhun
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Chevish Boodhun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   10-28-2022   Chevish Boodhun   Initial Version
+-->
+<aura:component>
+    <aura:attribute name="invoice" type="Invoice__c" />
+    <lightning:accordionSection label="{!v.invoice.Name}">
+        <lightning:recordViewForm recordId="{!v.invoice.Id}" objectApiName="Invoice__c">
+            <div class="slds-box">
+                <lightning:outputField fieldName="Name" />
+                <lightning:outputField fieldName="InvoiceDate__c" />
+                <lightning:outputField fieldName="Account__c" />
+                <lightning:outputField fieldName="AmountWithVat__c" />
+                <lightning:outputField fieldName="Contact__c" />
+                <lightning:outputField fieldName="AmountWithoutVat__c" />
+            </div>
+        </lightning:recordViewForm>
+    </lightning:accordionSection>
+</aura:component>

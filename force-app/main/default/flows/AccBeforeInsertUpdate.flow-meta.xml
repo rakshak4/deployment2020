@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <assignments>
-        <description>Set Active to yes and Activation Date to current datetime</description>
+        <description>Set Active to yes and Activation Date to current datetime.</description>
         <name>SetActiveAndActivationDate</name>
         <label>Set Active And Activation Date</label>
         <locationX>50</locationX>
@@ -22,11 +22,25 @@
             </value>
         </assignmentItems>
     </assignments>
+    <assignments>
+        <description>Set Deactivation Date as current datetime.</description>
+        <name>SetDeactivationDate</name>
+        <label>Set Deactivation Date</label>
+        <locationX>314</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.DeactivationDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
     <decisions>
-        <description>Check Bypass on custom setting</description>
+        <description>Check bypass on custom setting.</description>
         <name>CheckBypass</name>
         <label>Check Bypass</label>
-        <locationX>380</locationX>
+        <locationX>501</locationX>
         <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -46,12 +60,15 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Check if new record</description>
+        <description>Check if new record.</description>
         <name>CheckRecord</name>
-        <label>Check  Record</label>
-        <locationX>182</locationX>
+        <label>CheckRecord</label>
+        <locationX>248</locationX>
         <locationY>431</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnector>
+            <targetReference>IsChangedActiveAndActiveNo</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Updated</defaultConnectorLabel>
         <rules>
             <name>NewRecord</name>
             <conditionLogic>and</conditionLogic>
@@ -68,14 +85,44 @@
             <label>New Record</label>
         </rules>
     </decisions>
+    <decisions>
+        <description>Check if updated Active and Active No.</description>
+        <name>IsChangedActiveAndActiveNo</name>
+        <label>IsChanged Active and Active No</label>
+        <locationX>446</locationX>
+        <locationY>551</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsChangedActiveAndValueNo</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Active__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetDeactivationDate</targetReference>
+            </connector>
+            <label>IsChanged Active and Value No</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
-        <description>Check if record is new</description>
+        <description>Check if record is new.</description>
         <name>IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
     </formulas>
-    <interviewLabel>Acc {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>AccBeforeInsertUpdate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>AccBeforeInsertUpdate</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -97,7 +144,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>254</locationX>
+        <locationX>375</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CheckBypass</targetReference>

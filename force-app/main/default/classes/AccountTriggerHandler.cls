@@ -1,79 +1,27 @@
-/**************************************************************************************
+/**
+ * @description       : 
+ * @author            : Chevish Boodhun
+ * @group             : 
+ * @last modified on  : 11-08-2022
+ * @last modified by  : Chevish Boodhun
+ * Modifications Log
+ * Ver   Date         Author            Modification
+ * 1.0   11-08-2022   Chevish Boodhun   Initial Version
+**/
+public with sharing class AccountTriggerHandler {
 
--- - Author        : Spoon Consulting
+    public void handleAfterInsert(List<Account> lstNewAcc) {
 
--- - Description   : AccountTriggerHandler - Evaluation of rules before dispersion in service classes.
-
---
-
--- Maintenance History:
-
---
-
--- Date         Name  Version  Remarks
-
--- -----------  ----  -------  -------------------------------------------------------
-
--- 03-NOV-2022  HMO   1.0     Initial Version
-
---------------------------------------------------------------------------------------
-
-**************************************************************************************/
-
-public class AccountTriggerHandler {
-
-    public static Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Business').getRecordTypeId();
-
-    public void handleAfterInsert(List<Account> lstNewAccs){
-
-        List<Account> lstAccs = new List<Account>();
-
-        
-
-        for (Account acc : lstNewAccs){
-
-            if (String.isNotBlank(acc.Email__c) && (acc.recordTypeId == recordTypeId)){
-
-                lstAccs.add(acc);
-
+        List<Account> lstAcc = new List<Account>();
+        for (Account acc : lstNewAcc) {
+            if (acc.Email__c != null) {
+                lstAcc.add(acc);
             }
-
         }
-
+        if (lstAcc.size() > 0) {
+            AP07_AccountDetailsTiBiz.fetchAccountDetails(lstAcc[0].Id);
+        }
         
-
-        if (!lstAccs.isEmpty()){
-    		// To optimise for bulk 
-            AP03_SyncAccountInfo.getAccountInfo(lstAccs[0].Id);
-
-        }
-
-    }
-
-    
-
-     public void handleAfterUpdate(List<Account> lstNewAccs, Map<Id, Account> mapOldAccs){
-
-         List<Account> lstAccs = new List<Account>();
-
-         
-
-         for (Account acc : lstNewAccs){
-
-             if (String.isNotBlank(acc.Email__c) && (acc.recordTypeId == recordTypeId) && acc.Email__c != mapOldAccs.get(acc.Id).Email__c){
-
-                lstAccs.add(acc);
-
-             }
-
-         }
-
-         if (!lstAccs.isEmpty()){
-    		// To optimise for bulk 
-            AP03_SyncAccountInfo.getAccountInfo(lstAccs[0].Id);
-
-        }
-
     }
 
 }

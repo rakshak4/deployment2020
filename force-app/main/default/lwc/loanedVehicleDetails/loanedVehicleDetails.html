@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Chevish Boodhun
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Chevish Boodhun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   11-03-2022   Chevish Boodhun   Initial Version
+-->
+<template>
+    <div class={className}>
+        <h1>Loaned Vehicle</h1>
+        <lightning-button variant="brand" label="Terminate Loan" class="slds-m-left_x-small" onclick={handleTerminate} disabled={disableBtn}></lightning-button>
+        <template if:true={vehicleId}>
+            <lightning-record-view-form object-api-name="Vehicle__c" record-id={vehicleId}>
+                <lightning-output-field field-name="Name"> </lightning-output-field>
+                <lightning-output-field field-name="Make__c"> </lightning-output-field>
+                <lightning-output-field field-name="Model__c"> </lightning-output-field>
+                <lightning-output-field field-name="YearOfVehicle__c"> </lightning-output-field>
+                <lightning-output-field field-name="RegistrationNumber__c"> </lightning-output-field>
+            </lightning-record-view-form>
+        </template>
+        <template if:false={vehicleId}>
+            <p>No loaned vehicle</p>
+        </template>
+    </div>
+</template>

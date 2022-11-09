@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : Chevish Boodhun
+  @group             : 
+  @last modified on  : 11-03-2022
+  @last modified by  : Chevish Boodhun
+  Modifications Log
+  Ver   Date         Author            Modification
+  1.0   11-02-2022   Chevish Boodhun   Initial Version
+-->
+<template>
+  <template if:true={result}>
+    <c-customer-vehicle-details vehicle-id={DamagedVehicleId}></c-customer-vehicle-details>  
+    <c-loaned-vehicle-details vehicle-id={LoanedVehicleId} loan-end-date={loanEndDate} case-id={recordId} onremoveloanedvehicle={removeLoanedVehicle}></c-loaned-vehicle-details>  
+  </template>
+</template>
