@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>MyCustomObject__c.AaliyahMohungoo__c</members>
+        <members>MyCustomObject__c.BhoovanyuDhomah__c</members>
+        <members>MyCustomObject__c.DeekshaLuchman__c</members>
+        <members>MyCustomObject__c.KaniganSomadoo__c</members>
+        <members>MyCustomObject__c.MaadhavKoonjul__c</members>
+        <members>MyCustomObject__c.MehreenJhummun__c</members>
+        <members>MyCustomObject__c.RakshakRajjoo__c</members>
+        <members>MyCustomObject__c.RayhaanBeeharry__c</members>
+        <members>MyCustomObject__c.SouhaylJohar__c</members>
+        <members>MyCustomObject__c.YadhavJeetah__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>MyCustomObject__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>MyCustomObject__c-MyCustomObject Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>56.0</version>
+</Package>
