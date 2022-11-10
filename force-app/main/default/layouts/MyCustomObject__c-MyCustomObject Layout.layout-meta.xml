@@ -9,7 +9,12 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Name</field>
-            </layoutItems><layoutItems>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SambhavBholah__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>AshitaGopaul__c</field>
             <layoutItems>
