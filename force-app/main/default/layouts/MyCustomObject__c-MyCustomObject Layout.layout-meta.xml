@@ -12,6 +12,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>ShrishtiBeegun__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>AshitaChattoo__c</field>
             <layoutItems>
             <layoutItems>
