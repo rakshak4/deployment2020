@@ -152,11 +152,10 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <gender>Feminine</gender>
+    <externalSharingModel>Private</externalSharingModel>\
     <label>MyCustomObject</label>
     <nameField>
-        <label>MyCustomObject Name</label>
+        <label>My Custom Object Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>MyCustomObjects</pluralLabel>

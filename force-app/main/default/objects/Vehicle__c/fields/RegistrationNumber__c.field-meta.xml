@@ -3,7 +3,7 @@
     <fullName>RegistrationNumber__c</fullName>
     <caseSensitive>false</caseSensitive>
     <externalId>true</externalId>
-    <label>Registration Number</label>
+    <label>Registration number</label>
     <length>40</length>
     <required>true</required>
     <trackHistory>false</trackHistory>
