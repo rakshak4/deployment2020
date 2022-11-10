@@ -13,6 +13,57 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShrishtiBeegun__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AshitaChattoo__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AshitaChattoo__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AlfaazFulzulHossen__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ShidhiBundhooa__c</field>
+            <layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior
+                <field>IrfanBhugaloo__c</field>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>KaniganSomadoo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DeekshaLuchman__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>BhoovanyuDhomah__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AaliyahMohungoo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>YadhavJeetah__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MehreenJhummun__c</field>
+            </layoutItems>
+           <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RayhaanBeeharry__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SouhaylJohar__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

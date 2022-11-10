@@ -46,11 +46,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Loaned_Vehicle__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>testPicklist__c</field>
+                <field>Stage__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
