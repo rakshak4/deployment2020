@@ -53,33 +53,29 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>AshitaGopaul__c</field>
-            <layoutItems>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShrishtiBeegun__c</field>
-            <layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>AshitaChattoo__c</field>
-            <layoutItems>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>AshitaChattoo__c</field>
-            <layoutItems>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>AlfaazFulzulHossen__c</field>
-            <layoutItems>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShidhiBundhooa__c</field>
-            <layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior
-                <field>IrfanBhugaloo__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>KaniganSomadoo__c</field>
+                <field>IrfanBhugaloo__c</field>
+            </layoutItems>
+            <behavior>Edit</behavior>
+            <field>KaniganSomadoo__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -101,7 +97,7 @@
                 <behavior>Edit</behavior>
                 <field>MehreenJhummun__c</field>
             </layoutItems>
-           <layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>RayhaanBeeharry__c</field>
             </layoutItems>
@@ -141,9 +137,9 @@
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>true</editHeading>
-        <layoutColumns/>
-        <layoutColumns/>
-        <layoutColumns/>
+        <layoutColumns />
+        <layoutColumns />
+        <layoutColumns />
         <style>CustomLinks</style>
     </layoutSections>
     <showEmailCheckbox>false</showEmailCheckbox>
