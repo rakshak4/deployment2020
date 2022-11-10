@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>AmountWithVat__c</fullName>
     <externalId>false</externalId>
-    <formula>(AmountWithoutVat__c  *  Vat__c ) + AmountWithoutVat__c</formula>
-    <label>Amount with Vat</label>
+    <formula>( AmountWithoutVat__c  *  Vat__c ) +  AmountWithoutVat__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Amount with vat</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
