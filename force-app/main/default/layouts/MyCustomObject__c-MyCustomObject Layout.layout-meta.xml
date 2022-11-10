@@ -10,7 +10,9 @@
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
-            
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IrfanBhugaloo__c</field>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>KaniganSomadoo__c</field>
