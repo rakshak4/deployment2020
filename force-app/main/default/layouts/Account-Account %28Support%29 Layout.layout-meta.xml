@@ -408,6 +408,11 @@
         <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.EMAIL</fields>
         <fields>CONTACT.PHONE1</fields>
+        <fields>CONTACT.PHONE3</fields>
+        <fields>CONTACT.ADDRESS2_CITY</fields>
+        <fields>CONTACT.ADDRESS2_COUNTRY</fields>
+        <fields>CONTACT.ADDRESS2_STATE</fields>
+        <fields>CONTACT.ADDRESS2_STREET</fields>
         <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>

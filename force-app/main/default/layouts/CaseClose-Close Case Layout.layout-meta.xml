@@ -24,11 +24,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DamageType__c</field>
+                <field>Damage_type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DamageDetail__c</field>
+                <field>Damage_detail__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -36,7 +36,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>RepairDetails__c</field>
+                <field>Repair_details__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

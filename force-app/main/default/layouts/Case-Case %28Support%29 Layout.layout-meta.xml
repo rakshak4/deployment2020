@@ -85,7 +85,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DamageType__c</field>
+                <field>Damage_type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -229,11 +229,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DamageDetail__c</field>
+                <field>Damage_detail__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>RepairDetails__c</field>
+                <field>Repair_details__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -322,7 +322,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Invoice__c.Case__c</relatedList>
+        <relatedList>Invoices__c.Case__c</relatedList>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>
