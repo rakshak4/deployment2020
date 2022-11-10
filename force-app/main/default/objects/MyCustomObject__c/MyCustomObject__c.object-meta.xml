@@ -153,13 +153,12 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <gender>Feminine</gender>
-    <label>My Custom Object</label>
+    <label>MyCustomObject</label>
     <nameField>
-        <label>My Custom Object Name</label>
+        <label>MyCustomObject Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>My Custom Objects</pluralLabel>
+    <pluralLabel>MyCustomObjects</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
