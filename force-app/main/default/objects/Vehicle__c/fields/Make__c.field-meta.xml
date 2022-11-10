@@ -3,7 +3,7 @@
     <fullName>Make__c</fullName>
     <externalId>false</externalId>
     <label>Make</label>
-    <required>false</required>
+    <required>true</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -670,6 +670,81 @@
                 <fullName>ZAZ</fullName>
                 <default>false</default>
                 <label>ZAZ</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Multicolour</fullName>
+                <default>false</default>
+                <label>Multicolour</label>
+            </value>
+            <value>
+                <fullName>White</fullName>
+                <default>false</default>
+                <label>White</label>
+            </value>
+            <value>
+                <fullName>Black</fullName>
+                <default>false</default>
+                <label>Black</label>
+            </value>
+            <value>
+                <fullName>Red</fullName>
+                <default>false</default>
+                <label>Red</label>
+            </value>
+            <value>
+                <fullName>Blue</fullName>
+                <default>false</default>
+                <label>Blue</label>
+            </value>
+            <value>
+                <fullName>Green</fullName>
+                <default>false</default>
+                <label>Green</label>
+            </value>
+            <value>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+                <label>Yellow</label>
+            </value>
+            <value>
+                <fullName>Orange</fullName>
+                <default>false</default>
+                <label>Orange</label>
+            </value>
+            <value>
+                <fullName>Brown</fullName>
+                <default>false</default>
+                <label>Brown</label>
+            </value>
+            <value>
+                <fullName>Grey</fullName>
+                <default>false</default>
+                <label>Grey</label>
+            </value>
+            <value>
+                <fullName>Beige</fullName>
+                <default>false</default>
+                <label>Beige</label>
+            </value>
+            <value>
+                <fullName>Metalic</fullName>
+                <default>false</default>
+                <label>Metalic</label>
+            </value>
+            <value>
+                <fullName>Purple</fullName>
+                <default>false</default>
+                <label>Purple</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
             </value>
         </valueSetDefinition>
     </valueSet>
